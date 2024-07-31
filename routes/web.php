@@ -31,3 +31,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     // Otras rutas protegidas
 });
+
+// Middleware de tasa de limitación para login
+Route::post('login', [LoginController::class, 'login'])->middleware('throttle:10,1');
