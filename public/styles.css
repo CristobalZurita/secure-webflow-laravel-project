@@ -1,10 +1,11 @@
 /* styles.css */
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Adobe Clean', Arial, sans-serif;
     margin: 0;
     padding: 0;
     scroll-behavior: smooth;
+    background-color: lightgray; /* Cambio claro para verificar carga */
 }
 
 header {
@@ -36,7 +37,7 @@ header nav ul li a {
 
 header nav ul li a.active {
     font-weight: bold;
-    border-bottom: 2px solid white;
+    color: red; /* Cambio claro para verificar carga */
 }
 
 section {
@@ -49,7 +50,7 @@ section {
 }
 
 #home {
-    background: url('/images/home-bg.jpg') no-repeat center center/cover;
+    background: lightblue; /* Cambio claro para verificar carga */
 }
 
 #nosotros {

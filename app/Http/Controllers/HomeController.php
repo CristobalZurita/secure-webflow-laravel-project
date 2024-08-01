@@ -13,7 +13,8 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // Comentado para permitir acceso sin autenticación
+        // $this->middleware('auth');
     }
 
     /**
