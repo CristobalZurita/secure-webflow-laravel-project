@@ -1,5 +1,3 @@
-// main.js
-
 document.addEventListener('DOMContentLoaded', () => {
     console.log("JavaScript cargado correctamente");
 
@@ -8,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('scroll', () => {
         let current = '';
-        
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
@@ -24,4 +21,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Funcionalidad para botones "Agenda tu hora"
+    const agendarButtons = document.querySelectorAll('.cta-button');
+    agendarButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            alert('Funcionalidad de agendar hora aún no implementada');
+        });
+    });
+
+    // Manejo del formulario de contacto
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Formulario enviado. Gracias por contactarnos!');
+            contactForm.reset();
+        });
+    }
 });
