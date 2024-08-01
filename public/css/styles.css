@@ -1,0 +1,161 @@
+/* Estilos generales */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f5f0;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #4a6741;
+    padding: 20px 0;
+}
+
+.logo-container {
+    text-align: center;
+    color: white;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: center;
+    background-color: #6a8e61;
+    border-radius: 25px;
+}
+
+nav ul li {
+    padding: 10px 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: font-weight 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    font-weight: bold;
+    color: #e0d0a8;
+}
+
+/* Secciones */
+section {
+    padding: 50px 20px;
+}
+
+h2 {
+    color: #4a6741;
+    text-align: center;
+    font-size: 28px;
+}
+
+.cta-button {
+    background-color: #e0d0a8;
+    color: #4a6741;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #d0c098;
+}
+
+/* Home */
+#home {
+    text-align: center;
+}
+
+.food-images {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.food-images img {
+    width: 200px;
+    height: auto;
+    margin: 0 10px;
+    border-radius: 10px;
+}
+
+/* Opiniones */
+.opinion-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.opinion-card {
+    background-color: #6a8e61;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+}
+
+.stars {
+    color: #e0d0a8;
+    font-size: 24px;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.user-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Especialistas */
+.specialist-cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.specialist-card {
+    background-color: #6a8e61;
+    color: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.specialist-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Contacto */
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    flex-

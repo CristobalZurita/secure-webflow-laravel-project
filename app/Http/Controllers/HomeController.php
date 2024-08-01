@@ -13,8 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // Comentado para permitir acceso sin autenticación
-        // $this->middleware('auth');
+        $this->middleware('auth')->except(['welcome']);
     }
 
     /**
@@ -25,5 +24,15 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    /**
+     * Show the welcome page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function welcome()
+    {
+        return view('welcome');
     }
 }

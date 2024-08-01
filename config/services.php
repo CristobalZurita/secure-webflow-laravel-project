@@ -37,8 +37,8 @@ return [
 
     // Configuración de reCAPTCHA
     'recaptcha' => [
-        'sitekey' => env('NOCAPTCHA_SITEKEY'),
-        'secret' => env('NOCAPTCHA_SECRET'),
+        'site_key' => env('RECAPTCHA_SITE_KEY'),
+        'secret_key' => env('RECAPTCHA_SECRET_KEY'),
     ],
 
 ];
