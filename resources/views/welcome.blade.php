@@ -116,6 +116,12 @@
                 </form>
             </div>
         </section>
+
+        <!-- Contenedores para las aplicaciones Vue y React -->
+        <section id="app-sections">
+            <div id="vue-app"></div> <!-- Contenedor para la aplicación Vue -->
+            <div id="react-app"></div> <!-- Contenedor para la aplicación React -->
+        </section>
     </main>
 
     <footer>
@@ -127,6 +133,7 @@
         </div>
     </footer>
 
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>
 </html>
