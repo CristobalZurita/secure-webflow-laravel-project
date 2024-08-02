@@ -52,3 +52,6 @@ Route::post('login', [LoginController::class, 'login'])->middleware('throttle:10
 Route::get('/agendar-cita', [AppointmentController::class, 'showAppointmentForm'])->name('appointment.form');
 Route::post('/agendar-cita', [AppointmentController::class, 'scheduleAppointment'])->name('appointment.schedule');
 Route::get('/available-slots', [AppointmentController::class, 'getAvailableSlots'])->name('appointment.slots');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
