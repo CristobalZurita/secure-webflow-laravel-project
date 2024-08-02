@@ -1,75 +1,58 @@
-/* Estilos generales */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Estilos personalizados */
 body {
     font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f5f0;
-    color: #333;
+    @apply bg-yellow-50 text-gray-800;
 }
 
-/* Header */
 header {
-    background-color: #4a6741;
-    padding: 20px 0;
+    @apply bg-green-800 py-5;
 }
 
 .logo-container {
-    text-align: center;
-    color: white;
+    @apply text-center text-white;
 }
 
 .logo {
-    width: 100px;
-    height: auto;
+    @apply w-24 h-auto;
 }
 
 nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 20px 0 0;
-    display: flex;
-    justify-content: center;
-    background-color: #6a8e61;
-    border-radius: 25px;
+    @apply list-none p-0 mt-5 flex justify-center bg-green-700 rounded-full;
 }
 
 nav ul li {
-    padding: 10px 0;
+    @apply py-2;
 }
 
 nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    transition: font-weight 0.3s;
+    @apply text-white no-underline px-5 text-base transition-all duration-300;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-    font-weight: bold;
-    color: #e0d0a8;
+    @apply font-bold text-yellow-200;
 }
 
-/* Formulario de inicio de sesión */
 .container {
-    margin-top: 50px;
+    @apply mt-12;
 }
 
 .card-header {
-    font-weight: bold;
+    @apply font-bold;
 }
 
 .g-recaptcha {
-    margin-top: 20px;
+    @apply mt-5;
 }
 
 .btn-primary {
-    background-color: #e0d0a8;
-    border: none;
-    color: #4a6741;
+    @apply bg-yellow-200 border-0 text-green-800;
 }
 
 .btn-primary:hover {
-    background-color: #d0c098;
+    @apply bg-yellow-300;
 }

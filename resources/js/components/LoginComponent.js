@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Eye } from 'lucide-react';
-import './LoginForm.css'; // Asegúrate de tener este archivo para estilos específicos
+import './LoginForm.css';
 
 function LoginComponent() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const script = document.createElement("script");
@@ -14,16 +15,23 @@ function LoginComponent() {
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setError('');
     try {
       const response = await axios.post('http://localhost:8000/api/login', { email, password });
       console.log(response.data);
-      // Manejar la respuesta del login
+      // Manejar la respuesta del login exitoso
+      // Por ejemplo, redirigir al usuario o actualizar el estado global
     } catch (error) {
       console.error('Error en el inicio de sesión', error);
+      setError('Credenciales inválidas. Por favor, intente de nuevo.');
     }
   };
 
@@ -31,6 +39,7 @@ function LoginComponent() {
     <div className="flex justify-center items-center min-h-screen bg-green-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-96">
         <h2 className="text-2xl font-bold mb-6 text-center text-green-800">Iniciar sesión</h2>
+        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
