@@ -112,4 +112,21 @@ document.addEventListener('DOMContentLoaded', () => {
             grecaptcha.reset();
         });
     }
+
+    // Funcionalidad para mostrar el botón de scroll
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        var scrollTopButton = document.getElementById("scrollTopButton");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollTopButton.style.display = "block";
+        } else {
+            scrollTopButton.style.display = "none";
+        }
+    }
+
+    // Funcionalidad para volver al tope de la página
+    window.scrollToTop = function() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
 });

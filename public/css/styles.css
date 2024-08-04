@@ -7,6 +7,16 @@ body {
     color: #333;
 }
 
+/* Hacer el header sticky */
+header.sticky {
+    position: -webkit-sticky; /* Para navegadores Safari */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #4a6741; /* El mismo color de fondo del header */
+    padding: 20px 0;
+}
+
 /* Header */
 header {
     background-color: #4a6741;
@@ -216,4 +226,25 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
+}
+
+/* Botón para volver al tope */
+#scrollTopButton {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    border: none;
+    outline: none;
+    background-color:  #d0c098;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+#scrollTopButton:hover {
+    background-color: #68bf4d;
 }
