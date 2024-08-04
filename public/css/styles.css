@@ -248,3 +248,108 @@ footer {
 #scrollTopButton:hover {
     background-color: #97a993;
 }
+
+/* Login Container */
+.login-container {
+    display: flex;
+    height: calc(100vh - 80px);
+}
+
+.login-left, .login-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-left {
+    background-color: #6a8e61;
+    color: black;
+    padding: 20px;
+}
+
+.login-logo {
+    width: 100px;
+    height: auto;
+}
+
+.login-title {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.login-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+.contact-info {
+    font-size: 0.875rem;
+}
+
+.login-right {
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.login-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 35px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.login-button {
+    background-color: #ffd466;
+    color: black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.login-links {
+    text-align: center;
+}
+
+.login-links a {
+    display: block;
+    color: #6a8e61;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.login-links a:hover {
+    color: #4a6741;
+}
