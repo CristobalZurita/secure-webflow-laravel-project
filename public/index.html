@@ -28,9 +28,8 @@
     <section id="home">
         <div class="section-content">
             <h2>Bienvenido a Nutribite</h2>
-            <p>Nutribite es una web amigable de nutrición que te ayuda a comer sano y sentirte bien. Encuentra consejos, recetas y planes personalizados para mejorar tu bienestar. ¡Descubre una vida más saludable con Nutribite!</p>
-            <button class="cta-button" onclick="location.href='agendar.html'">Agenda tu hora</button>
-
+            <p>Nutribite es una plataforma web de nutrición diseñada para ayudarte a mantener una alimentación saludable y sentirte mejor. Ofrecemos consejos prácticos, recetas deliciosas y planes personalizados para mejorar tu bienestar. ¡Únete a Nutribite y descubre el camino hacia una vida más saludable!</p>
+            <button class="cta-button agenda-hora">Agenda tu hora</button>
         </div>
     </section>
 
@@ -38,7 +37,19 @@
         <div class="section-content">
             <h2>Nosotros</h2>
             <p>Nutribite es tu aliado en nutrición. Te ofrecemos guías, recetas y tips personalizados para una alimentación balanceada y saludable. ¡Transforma tu vida con Nutribite!</p>
-            <button class="cta-button">Agenda tu hora</button>
+            
+            <div class="mission-vision">
+                <div class="mission">
+                    <h3>Misión</h3>
+                    <p>Empoderar vidas a través de la nutrición, utilizando tecnología innovadora y seguridad de datos de vanguardia para crear un futuro más saludable y seguro para todos.</p>
+                </div>
+                <div class="vision">
+                    <h3>Visión</h3>
+                    <p>Ser la plataforma líder mundial en nutrición y bienestar, donde la tecnología avanzada y la seguridad de datos crean un ecosistema de salud inclusivo, accesible y confiable para mejorar la calidad de vida de las personas en todo el mundo.</p>
+                </div>
+            </div>
+            
+            <button class="cta-button agenda-hora">Agenda tu hora</button>
         </div>
     </section>
 
@@ -99,12 +110,12 @@
                         <li>hello@reallygreatsite.com</li>
                         <li>123 Anywhere ST., Any City, 12345</li>
                     </ul>
-                    <button class="cta-button">Agenda tu hora</button>
+                    <button class="cta-button agenda-hora">Agenda tu hora</button>
                 </div>
                 <form class="contact-form" id="contactForm">
                     <input type="text" name="nombre" placeholder="Nombre" required>
-                    <input type="email" name="correo" placeholder="Correo" required>
-                    <input type="tel" name="telefono" placeholder="Teléfono">
+                    <input type="email" name="correo" placeholder="Correo" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                    <input type="tel" name="telefono" placeholder="Teléfono (formato: +56982859548)" pattern="\+[0-9]{11,}" title="Ingrese un número de teléfono válido (formato: +56982859548)">
                     <textarea name="mensaje" placeholder="Mensaje" required></textarea>
                     <button type="submit">ENVIAR</button>
                 </form>

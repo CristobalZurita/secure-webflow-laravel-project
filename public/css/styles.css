@@ -353,3 +353,40 @@ footer {
 .login-links a:hover {
     color: #4a6741;
 }
+
+/* Nuevos estilos para la sección de misión y visión */
+.mission-vision {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.mission, .vision {
+    flex-basis: 48%;
+    background-color: #f8f8f8;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.mission h3, .vision h3 {
+    color: #4a6741;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.mission p, .vision p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .mission-vision {
+        flex-direction: column;
+    }
+    
+    .mission, .vision {
+        margin-bottom: 1rem;
+    }
+}

@@ -77,10 +77,10 @@ document.addEventListener('DOMContentLoaded', () => {
     makeNavLinkBold();
 
     // Funcionalidad para botones "Agenda tu hora"
-    const agendarButtons = document.querySelectorAll('.cta-button');
+    const agendarButtons = document.querySelectorAll('.agenda-hora');
     agendarButtons.forEach(button => {
         button.addEventListener('click', () => {
-            alert('Funcionalidad de agendar hora aún no implementada');
+            window.location.href = 'agendar.html';
         });
     });
 
@@ -90,26 +90,42 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
+            const nombre = contactForm.querySelector('input[name="nombre"]').value.trim();
+            const correo = contactForm.querySelector('input[name="correo"]').value.trim();
+            const telefono = contactForm.querySelector('input[name="telefono"]').value.trim();
+            const mensaje = contactForm.querySelector('textarea[name="mensaje"]').value.trim();
+
+            // Validación del nombre
+            if (nombre === '') {
+                alert('Por favor, ingrese su nombre.');
+                return;
+            }
+
             // Validación del correo electrónico
-            const emailInput = contactForm.querySelector('input[name="correo"]');
             const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            
-            if (!emailRegex.test(emailInput.value)) {
+            if (!emailRegex.test(correo)) {
                 alert('Por favor, ingrese una dirección de correo electrónico válida.');
                 return;
             }
 
-            // Verificación del reCAPTCHA
-            const response = grecaptcha.getResponse();
-            if (response.length === 0) {
-                alert('Por favor, complete el reCAPTCHA.');
+            // Validación del teléfono
+            if (telefono !== '') {
+                const phoneRegex = /^\+[0-9]{11,}$/;
+                if (!phoneRegex.test(telefono)) {
+                    alert('Por favor, ingrese un número de teléfono válido (formato: +56982859548).');
+                    return;
+                }
+            }
+
+            // Validación del mensaje
+            if (mensaje === '') {
+                alert('Por favor, ingrese un mensaje.');
                 return;
             }
 
             // Si todo está bien, envía el formulario
             alert('Formulario enviado correctamente. Gracias por contactarnos!');
             contactForm.reset();
-            grecaptcha.reset();
         });
     }
 
