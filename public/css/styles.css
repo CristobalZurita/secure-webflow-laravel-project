@@ -143,7 +143,7 @@ nav ul li a:hover {
 }
 .mapa {
     width: 100%;
-    height: 400px;
+    height: 700px;
     border: none;
     margin-top: 20px;
 }
@@ -225,7 +225,7 @@ nav ul li a.active {
 
 /* Secciones */
 section {
-    padding: 50px 20px;
+    padding: 50px 400px;
 }
 
 h2 {
@@ -508,48 +508,50 @@ footer {
     color: #4a6741;
 }
 
-//* Contenedor de la sección Nosotros */
-.mission-vision-container {
+/* Estilos para la sección de misión y visión */
+.mision-vision-container {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: stretch; /* Asegura que las viñetas tengan la misma altura */
-    gap: 20px; /* Espacio entre las viñetas */
-}
-
-/* Estilos para las viñetas de misión y visión */
-.mission-vision-card {
-    background-color: #4a6741; /* Color de fondo de las viñetas */
-    color: #f9f5f0; /* Color de texto */
+    background-color: #7BAE7F;
+    border-radius: 15px;
     padding: 20px;
-    border-radius: 10px;
-    flex: 1; /* Hace que las viñetas ocupen el mismo espacio */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Distribuye el contenido verticalmente */
-    min-height: 200px; /* Altura mínima de las viñetas */
+    margin: 20px 0;
 }
 
-/* Estilos para los encabezados de misión y visión */
-.mission-vision-card h3 {
-    margin-bottom: 10px;
+.mision-vision {
+    width: 50%;
+}
+
+.mision-vision h3 {
     font-size: 24px;
-    color: #e0d0a8;
+    color: #fff;
+    margin-bottom: 10px;
 }
 
-/* Estilos para los párrafos de misión y visión */
-.mission-vision-card p {
+.mision-vision p {
     font-size: 16px;
+    color: #fff;
     line-height: 1.5;
 }
 
+.mision-vision img {
+    width: 40%;
+    border-radius: 15px;
+}
+
 @media (max-width: 768px) {
-    .mission-vision-container {
+    .mision-vision-container {
         flex-direction: column;
     }
 
-    .mission-vision-card {
+    .mision-vision {
+        width: 100%;
         margin-bottom: 20px;
+    }
+
+    .mision-vision img {
+        width: 100%;
     }
 }
 
