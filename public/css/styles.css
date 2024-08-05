@@ -1,111 +1,112 @@
-/* Estilos específicos para la sección de planes */
+/* Contenedor para las tarjetas de precios */
 .pricing-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-.pricing-card {
-    background-color: #6a8e61;
-    color: white;
-    border-radius: 10px;
-    padding: 20px;
-    width: calc(33.333% - 20px);
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-}
-.pricing-card h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-.price {
-    font-size: 36px;
-    font-weight: bold;
-    margin: 20px 0;
-}
-.features {
-    list-style-type: none;
-    padding: 0;
-    margin: 20px 0;
-    text-align: left;
-}
-.features li {
-    margin-bottom: 10px;
-    padding-left: 25px;
-    position: relative;
-}
-.features li::before {
-    content: "✓";
-    position: absolute;
-    left: 0;
-    color: #e0d0a8;
-}
-.best-offer {
-    background-color: #ffd466;
-    color: #4a6741;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 14px;
-    font-weight: bold;
-    position: absolute;
-    top: -10px;
-    right: -10px;
-}
-@media (max-width: 768px) {
-    .pricing-container {
-        flex-direction: column;
-    }
-    .pricing-card {
-        width: 100%;
-        margin-bottom: 20px;
-    }
+    display: flex; /* Utiliza Flexbox para alinear las tarjetas en fila */
+    justify-content: center; /* Centra las tarjetas horizontalmente */
+    align-items: stretch; /* Asegura que todas las tarjetas tengan la misma altura */
+    gap: 35px; /* Espacio entre las tarjetas */
+    max-width: 100%; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 20px; /* Espaciado interno del contenedor */
+    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en pantallas pequeñas */
 }
 
-/* Estilos para la sección de misión y visión */
-.mission-vision-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+/* Estilos para cada tarjeta de precio */
+.pricing-card {
+    background-color: #6a8e61; /* Color de fondo verde */
+    color: white; /* Color de texto blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    padding: 20px; /* Espaciado interno de la tarjeta */
+    width: calc(33.333% - 200px); /* Ancho de cada tarjeta */
+    text-align: center; /* Centra el texto */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra de las tarjetas */
+    display: flex; /* Utiliza Flexbox para alinear los elementos internos */
+    flex-direction: column; /* Alinea los elementos en columna */
+    justify-content: center; /* Espacia uniformemente los elementos */
+    position: relative; /* Para posicionar elementos absolutos dentro de la tarjeta */
+    min-height: 400px; /* Altura mínima de las tarjetas */
 }
-.mission-vision-card {
-    background-color: #6a8e61;
-    color: white;
-    border-radius: 10px;
-    padding: 20px;
-    width: calc(50% - 10px);
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+/* Contenedor para los elementos internos de la tarjeta */
+.pricing-card .content {
+    display: flex; /* Utiliza Flexbox para alinear los elementos */
+    flex-direction: column; /* Alinea los elementos en columna */
+    justify-content: center; /* Espacia uniformemente los elementos */
+    align-items: center;
+    flex-grow: 1; /* Hace que el contenedor crezca para llenar el espacio */
 }
-.mission-vision-card h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #e0d0a8;
+
+/* Estilos para el título de la tarjeta */
+.pricing-card h3 {
+    font-size: 30px; /* Tamaño de la fuente para los títulos */
+    margin-bottom: 10px; /* Espacio inferior del título */
 }
-.mission-vision-card p {
-    font-size: 16px;
-    line-height: 1.5;
+
+/* Contenedor para el precio */
+.price-wrapper {
+    font-size: 26px; /* Tamaño de la fuente para los precios */
+    font-weight: bold; /* Negrita para los precios */
+    margin: 10px 0; /* Espaciado superior e inferior del precio */
+    display: flex; /* Utiliza Flexbox para alinear el precio */
+    align-items: center; /* Centra verticalmente el precio */
+    justify-content: center; /* Centra horizontalmente el precio */
 }
+
+/* Estilos para la lista de características */
+.features {
+    list-style-type: none; /* Quita los puntos de la lista */
+    padding: 0; /* Quita el padding de la lista */
+    margin: 10px 0; /* Espaciado superior e inferior de la lista */
+    text-align: left; /* Centra el texto */
+    flex-grow: 1; /* Hace que la lista crezca para llenar el espacio disponible */
+    display: flex; /* Utiliza Flexbox para alinear los elementos */
+    flex-direction: column; /* Alinea los elementos en columna */
+    justify-content: center; /* Centra los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+}
+
+/* Estilos para cada elemento de la lista de características */
+.features li {
+    margin-bottom: 5px; /* Espacio inferior de cada elemento */
+    padding-left: 25px; /* Espacio a la izquierda de cada elemento */
+    position: relative; /* Para posicionar el icono de verificación */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+/* Estilos para el icono de verificación */
+.features li::before {
+    content: "✓"; /* Icono de verificación */
+    position: absolute; /* Posiciona el icono de forma absoluta */
+    left: 2px; /* Alinea el icono a la izquierda */
+    color: #e0d0a8; /* Color del icono */
+}
+
+/* Estilos para la etiqueta de mejor oferta */
+.best-offer {
+    background-color: #ffd466; /* Color de fondo amarillo */
+    color: #4a6741; /* Color de texto verde */
+    padding: 5px 10px; /* Espaciado interno de la etiqueta */
+    border-radius: 15px; /* Bordes redondeados */
+    font-size: 14px; /* Tamaño de la fuente */
+    font-weight: bold; /* Negrita para el texto */
+    position: absolute; /* Posiciona la etiqueta de forma absoluta */
+    top: -10px; /* Posiciona la etiqueta en la parte superior */
+    right: -10px; /* Posiciona la etiqueta a la derecha */
+}
+
+/* Estilos para el botón de llamada a la acción */
+.cta-button {
+    margin-top: 20px; /* Espacio superior del botón */
+    padding: 10px 15px; /* Espaciado interno del botón */
+    font-size: 16px; /* Tamaño de la fuente del botón */
+}
+
 @media (max-width: 768px) {
-    .mission-vision-container {
-        flex-direction: column;
+    .pricing-container {
+        flex-direction: column; /* Alinea las tarjetas en columna en pantallas pequeñas */
     }
-    .mission-vision-card {
-        width: 100%;
-        margin-bottom: 20px;
+    .pricing-card {
+        width: 100%; /* Ancho completo de las tarjetas en pantallas pequeñas */
+        margin-bottom: 20px; /* Espacio inferior de las tarjetas en pantallas pequeñas */
     }
 }
 
@@ -307,7 +308,7 @@ h2 {
 /* Especialistas */
 .specialist-cards {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -315,7 +316,7 @@ h2 {
     background-color: #6a8e61;
     color: white;
     border-radius: 10px;
-    padding: 20px;
+    padding: 25px;
     margin: 10px;
     width: 300px;
     text-align: center;
@@ -327,6 +328,7 @@ h2 {
     border-radius: 50%;
     object-fit: cover;
 }
+
 
 /* Contacto */
 .contact-container {
@@ -506,42 +508,51 @@ footer {
     color: #4a6741;
 }
 
-/* Nuevos estilos para la sección de misión y visión */
-.mission-vision {
+//* Contenedor de la sección Nosotros */
+.mission-vision-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    align-items: stretch; /* Asegura que las viñetas tengan la misma altura */
+    gap: 20px; /* Espacio entre las viñetas */
 }
 
-.mission, .vision {
-    flex-basis: 48%;
-    background-color: #f8f8f8;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+/* Estilos para las viñetas de misión y visión */
+.mission-vision-card {
+    background-color: #4a6741; /* Color de fondo de las viñetas */
+    color: #f9f5f0; /* Color de texto */
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1; /* Hace que las viñetas ocupen el mismo espacio */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuye el contenido verticalmente */
+    min-height: 200px; /* Altura mínima de las viñetas */
 }
 
-.mission h3, .vision h3 {
-    color: #4a6741;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
+/* Estilos para los encabezados de misión y visión */
+.mission-vision-card h3 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #e0d0a8;
 }
 
-.mission p, .vision p {
-    font-size: 0.9rem;
+/* Estilos para los párrafos de misión y visión */
+.mission-vision-card p {
+    font-size: 16px;
     line-height: 1.5;
 }
 
 @media (max-width: 768px) {
-    .mission-vision {
+    .mission-vision-container {
         flex-direction: column;
     }
-    
-    .mission, .vision {
-        margin-bottom: 1rem;
+
+    .mission-vision-card {
+        margin-bottom: 20px;
     }
 }
+
 
 /* Estilos específicos para la sección de recetas */
 .recipe-cards {
