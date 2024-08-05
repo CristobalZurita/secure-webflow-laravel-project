@@ -6,6 +6,118 @@
     <title>Nutribite</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://use.typekit.net/apl6lau.css">
+    <style>
+        /* Estilos específicos para la sección de planes */
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .pricing-card {
+            background-color: #6a8e61;
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: calc(33.333% - 20px);
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .price {
+            font-size: 36px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .features {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #e0d0a8;
+        }
+        .best-offer {
+            background-color: #ffd466;
+            color: #4a6741;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 14px;
+            font-weight: bold;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+        @media (max-width: 768px) {
+            .pricing-container {
+                flex-direction: column;
+            }
+            .pricing-card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Nuevos estilos para la sección de misión y visión */
+        .mission-vision-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .mission-vision-card {
+            background-color: #6a8e61;
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: calc(50% - 10px);
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .mission-vision-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #e0d0a8;
+        }
+        .mission-vision-card p {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        @media (max-width: 768px) {
+            .mission-vision-container {
+                flex-direction: column;
+            }
+            .mission-vision-card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="sticky">
@@ -38,12 +150,12 @@
             <h2>Nosotros</h2>
             <p>Nutribite es tu aliado en nutrición. Te ofrecemos guías, recetas y tips personalizados para una alimentación balanceada y saludable. ¡Transforma tu vida con Nutribite!</p>
             
-            <div class="mission-vision">
-                <div class="mission">
+            <div class="mission-vision-container">
+                <div class="mission-vision-card">
                     <h3>Misión</h3>
                     <p>Empoderar vidas a través de la nutrición, utilizando tecnología innovadora y seguridad de datos de vanguardia para crear un futuro más saludable y seguro para todos.</p>
                 </div>
-                <div class="vision">
+                <div class="mission-vision-card">
                     <h3>Visión</h3>
                     <p>Ser la plataforma líder mundial en nutrición y bienestar, donde la tecnología avanzada y la seguridad de datos crean un ecosistema de salud inclusivo, accesible y confiable para mejorar la calidad de vida de las personas en todo el mundo.</p>
                 </div>
@@ -79,11 +191,37 @@
     <section id="planes">
         <div class="section-content">
             <h2>Planes</h2>
-            <div class="plan-card">
-                <h3>Plan Personal</h3>
-                <p>Personalizado, online y presencial. Incluye seguimiento y ajustes según tus necesidades.</p>
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <h3>IMC</h3>
+                    <div class="price">GRATIS</div>
+                    <p>Mide tu IMC de manera online haciendo click más abajo:</p>
+                    <a href="#" class="cta-button">Iniciar medición</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Plan Personal</h3>
+                    <div class="price">$20.000</div>
+                    <ul class="features">
+                        <li>Personalizado</li>
+                        <li>Online y presencial</li>
+                        <li>Asistido por un profesional</li>
+                        <li>Convenio con gimnasios</li>
+                    </ul>
+                    <a href="#" class="cta-button">Contratar Plan</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="best-offer">#Mejor Oferta</div>
+                    <h3>Plan Familiar</h3>
+                    <div class="price">$17.500*</div>
+                    <ul class="features">
+                        <li>*Precio por persona</li>
+                        <li>Online y presencial</li>
+                        <li>Asistido por un profesional</li>
+                        <li>Convenio con gimnasios</li>
+                    </ul>
+                    <a href="#" class="cta-button">Contratar Plan</a>
+                </div>
             </div>
-            <!-- Agrega más planes aquí si es necesario -->
         </div>
     </section>
 
