@@ -6,118 +6,6 @@
     <title>Nutribite</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://use.typekit.net/apl6lau.css">
-    <style>
-        /* Estilos específicos para la sección de planes */
-        .pricing-container {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .pricing-card {
-            background-color: #6a8e61;
-            color: white;
-            border-radius: 10px;
-            padding: 20px;
-            width: calc(33.333% - 20px);
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-        }
-        .pricing-card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .price {
-            font-size: 36px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-        .features {
-            list-style-type: none;
-            padding: 0;
-            margin: 20px 0;
-            text-align: left;
-        }
-        .features li {
-            margin-bottom: 10px;
-            padding-left: 25px;
-            position: relative;
-        }
-        .features li::before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            color: #e0d0a8;
-        }
-        .best-offer {
-            background-color: #ffd466;
-            color: #4a6741;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 14px;
-            font-weight: bold;
-            position: absolute;
-            top: -10px;
-            right: -10px;
-        }
-        @media (max-width: 768px) {
-            .pricing-container {
-                flex-direction: column;
-            }
-            .pricing-card {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-        }
-
-        /* Nuevos estilos para la sección de misión y visión */
-        .mission-vision-container {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .mission-vision-card {
-            background-color: #6a8e61;
-            color: white;
-            border-radius: 10px;
-            padding: 20px;
-            width: calc(50% - 10px);
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .mission-vision-card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-            color: #e0d0a8;
-        }
-        .mission-vision-card p {
-            font-size: 16px;
-            line-height: 1.5;
-        }
-        @media (max-width: 768px) {
-            .mission-vision-container {
-                flex-direction: column;
-            }
-            .mission-vision-card {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-        }
-    </style>
 </head>
 <body>
     <header class="sticky">
@@ -129,8 +17,9 @@
                     <li><a href="#nosotros">Nosotros</a></li>
                     <li><a href="#especialistas">Especialistas</a></li>
                     <li><a href="#planes">Planes</a></li>
-                    <li><a href="#promociones">Promociones</a></li>
+                    <li><a href="#recetas">Recetas</a></li>
                     <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#ubicacion">Ubicación</a></li>
                     <li><a href="ingreso.html" class="ingreso">Ingreso</a></li>
                 </ul>
             </nav>
@@ -173,20 +62,24 @@
                     <img src="images/monica.jpg" alt="Mónica Muñoz">
                     <h3>Mónica Muñoz</h3>
                     <p>Experta en trastornos alimenticios en niños y adolescentes. Más de 15 años de experiencia</p>
+                    <a href="experiencia.html" class="cta-button">Ver Experiencia</a>
                 </div>
                 <div class="specialist-card">
                     <img src="images/oscar.jpg" alt="Oscar Andrade">
                     <h3>Oscar Andrade</h3>
                     <p>Experto en problemas gástricos, desnutrición. Cuenta con más de 40 años de experiencia.</p>
+                    <a href="experiencia.html" class="cta-button">Ver Experiencia</a>
                 </div>
                 <div class="specialist-card">
                     <img src="images/camila.jpg" alt="Camila Saavedra">
                     <h3>Camila Saavedra</h3>
                     <p>Experta en adulto mayor y tercera edad. Cuenta con más de 10 años de experiencia.</p>
+                    <a href="experiencia.html" class="cta-button">Ver Experiencia</a>
                 </div>
             </div>
         </div>
     </section>
+    
 
     <section id="planes">
         <div class="section-content">
@@ -225,14 +118,42 @@
         </div>
     </section>
 
-    <section id="promociones">
+    <section id="recetas">
         <div class="section-content">
-            <h2>Promociones</h2>
-            <div class="promo-card">
-                <h3>IMC Gratis</h3>
-                <p>Mide tu IMC de manera online y recibe recomendaciones básicas sin costo.</p>
+            <h2>Recetas Nutritivas</h2>
+            <p>Descubre deliciosas recetas saludables para incorporar en tu dieta diaria.</p>
+            <div class="recipe-cards">
+                <div class="recipe-card">
+                    <h3>Ensalada Mediterránea</h3>
+                    <p>Una refrescante mezcla de vegetales, aceitunas y queso feta con aderezo de aceite de oliva.</p>
+                    <a href="#" class="cta-button">Ver Receta</a>
+                </div>
+                <div class="recipe-card">
+                    <h3>Smoothie Verde Energizante</h3>
+                    <p>Bebida llena de nutrientes con espinacas, plátano, manzana y jengibre.</p>
+                    <a href="#" class="cta-button">Ver Receta</a>
+                </div>
+                <div class="recipe-card">
+                    <h3>Bowl de Quinoa y Vegetales</h3>
+                    <p>Una comida completa con quinoa, vegetales asados y proteína a elección.</p>
+                    <a href="#" class="cta-button">Ver Receta</a>
+                </div>
+                <div class="recipe-card">
+                    <h3>Wrap de Pavo y Aguacate</h3>
+                    <p>Tortilla integral rellena de pavo magro, aguacate y vegetales crujientes.</p>
+                    <a href="#" class="cta-button">Ver Receta</a>
+                </div>
+                <div class="recipe-card">
+                    <h3>Salmón al Horno con Espárragos</h3>
+                    <p>Salmón rico en omega-3 acompañado de espárragos y limón.</p>
+                    <a href="#" class="cta-button">Ver Receta</a>
+                </div>
+                <div class="recipe-card">
+                    <h3>Overnight Oats con Frutas</h3>
+                    <p>Avena remojada durante la noche con yogur, frutas y nueces.</p>
+                    <a href="#" class="cta-button">Ver Receta</a>
+                </div>
             </div>
-            <!-- Agrega más promociones aquí si es necesario -->
         </div>
     </section>
 
@@ -257,6 +178,16 @@
                     <textarea name="mensaje" placeholder="Mensaje" required></textarea>
                     <button type="submit">ENVIAR</button>
                 </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="ubicacion">
+        <div class="section-content">
+            <h2>Ubicación</h2>
+            <div class="ubicacion-container">
+                <p>Nos encontramos en el corazón de la ciudad, fácilmente accesible para todos nuestros clientes.</p>
+                <iframe class="mapa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3330.2398655710394!2d-70.60491868479617!3d-33.41844988078272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662cf69d4854951%3A0x9a87e306d697b4d8!2sAv.%20Providencia%201208%2C%20Providencia%2C%20Regi%C3%B3n%20Metropolitana!5e0!3m2!1ses!2scl!4v1628901234567!5m2!1ses!2scl" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
