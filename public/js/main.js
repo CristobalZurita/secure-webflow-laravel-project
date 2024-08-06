@@ -1,16 +1,18 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("JavaScript cargado correctamente");
-
-    // Funcionalidad para mostrar/ocultar contraseña
     const passwordToggle = document.querySelector('.password-toggle');
-    if (passwordToggle) {
+    const passwordInput = document.getElementById('password');
+    
+    if (passwordToggle && passwordInput) {
+        // Asegurarse de que el ícono del ojo sea visible inicialmente
+        passwordToggle.textContent = '👁️';
+        
         passwordToggle.addEventListener('click', function() {
-            const passwordInput = this.previousElementSibling;
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
             this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
         });
     }
+});
 
     // Validación de formulario de inicio de sesión
     const loginForm = document.getElementById('login-form');
@@ -145,4 +147,3 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollToTop = function() {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
-});

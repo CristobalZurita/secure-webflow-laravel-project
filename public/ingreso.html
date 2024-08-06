@@ -20,19 +20,22 @@
         </div>
     </header>
 
-    <div class="login-container">
-        <div class="login-left">
-            <img src="images/logo.png" alt="Nutribite Logo" class="login-logo">
-            <h1 class="login-title">Nutribite</h1>
-            <p class="login-subtitle">Salud y cuidado en tu hogar</p>
+    <main class="login-container section-content">
+        <section class="login-left">
+            <div class="login-left-content">
+                <img src="/public/images/brocoli.png" alt="Brócoli" class="background-image">
+                <h2 class="login-title">Nutribite</h2>
+                <p class="login-subtitle">Salud y cuidado en tu hogar</p>
+            </div>
             <div class="contact-info">
                 <p>contacto@nutribite.com</p>
                 <p>soporte@nutribite.com</p>
                 <p>Mesa de ayuda: (+56) 9 9999 9999</p>
                 <p>Avenida Pedro Montt 2930, piso 2 oficina 201, Valparaíso.</p>
             </div>
-        </div>
-        <div class="login-right">
+        </section>
+
+        <section class="login-right">
             <form class="login-form" onsubmit="handleSubmit(event)">
                 <div class="form-group">
                     <label for="email">Usuario</label>
@@ -40,19 +43,19 @@
                 </div>
                 <div class="form-group relative">
                     <label for="password">Contraseña</label>
-                    <input type="password" id="password" placeholder="Contraseña" required>
-                    <button type="button" class="password-toggle" onclick="togglePasswordVisibility()">👁️</button>
+                    <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                    <button type="button" class="password-toggle" aria-label="Toggle password visibility">👁️</button>
                 </div>
                 <div class="g-recaptcha" data-sitekey="6Le9sR0qAAAAAFH15LWT_CiSU-8ssw6WdizUjz0i"></div>
-                <button type="submit" class="login-button">Iniciar sesión</button>
+                <button type="submit" class="login-button cta-button">Iniciar sesión</button>
             </form>
             <div class="login-links">
                 <a href="#">Recordar contraseña</a>
                 <a href="#">Crear Usuario Nuevo</a>
                 <a href="#">Olvidé mi contraseña</a>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; 2024 Nutribite. Todos los derechos reservados.</p>
@@ -80,6 +83,3 @@
     </script>
 </body>
 </html>
-
-
-

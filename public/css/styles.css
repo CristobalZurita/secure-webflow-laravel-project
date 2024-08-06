@@ -1,43 +1,56 @@
 /* Estilos generales */
+:root {
+    --primary-color: #4a6741;
+    --secondary-color: #6a8e61;
+    --accent-color: #edb06a;
+    --text-color: #333;
+    --background-color: #f9f5f0;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f9f5f0;
-    color: #333;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.5;
 }
 
 /* Secciones */
 section {
-    padding: 50px 5px; /* Añade padding vertical a todas las secciones */
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h2 {
-    color: #4a6741;
+    color: var(--primary-color);
     text-align: center;
-    font-size: 28px;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
 }
 
-/* Estilo para centrar el texto específico */
 .centered-text {
     text-align: center;
     font-weight: bold;
-    margin: 20px 0; /* Ajusta el margen según sea necesario */
+    margin: 1.25rem 0;
 }
 
 .cta-button {
-    background-color: #e0d0a8;
-    color: #4a6741;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
     border: none;
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
-    border-radius: 25px;
+    border-radius: 1.5625rem;
     transition: background-color 0.3s;
     text-decoration: none;
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 0.625rem;
 }
 
 .cta-button:hover {
@@ -46,13 +59,14 @@ h2 {
 
 /* Header */
 header {
-    background-color: #4a6741;
-    padding: 20px 0;
+    background-color: var(--primary-color);
+    padding: 1.25rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Hacer el header sticky */
 header.sticky {
-    position: -webkit-sticky; /* Para navegadores Safari */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -63,42 +77,46 @@ header.sticky {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 90%;
+    max-width: 1200px;
 }
 
 header h1 {
     margin: 0;
     padding: 0.5em 0;
+    font-size: 2rem;
+    color: white;
 }
 
-/* Estilos para el menú actualizado */
+/* Navegación */
 nav ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
     padding: 0;
-    margin: 20px 0 0;
+    margin: 1.25rem 0 0;
     list-style-type: none;
-    background-color: #6a8e61;
-    border-radius: 25px;
+    background-color: var(--secondary-color);
+    border-radius: 1.5625rem;
 }
 
 nav ul li {
-    padding: 10px 0;
-    margin: 0 10px;
+    padding: 0.625rem;
+    margin: 0 0.3125rem;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover,
 nav ul li a.active {
-    font-weight: bold;
-    color: #e0d0a8;
+    color: var(--accent-color);
 }
 
 /* Home */
@@ -109,292 +127,265 @@ nav ul li a.active {
 .food-images {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.25rem;
 }
 
 .food-images img {
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
     height: auto;
-    margin: 0 10px;
-    border-radius: 10px;
+    border-radius: 0.625rem;
+    object-fit: cover;
 }
 
-/* Estilos para la sección de misión y visión */
+/* Misión y Visión */
 .mision-vision-container {
-    background-color: #6a8e61;
-    border-radius: 15px;
-    padding: 20px;
-    margin: 100px auto;
-    max-width: 2000px; /* Aumentado a 2000px */
+    background-color: var(--secondary-color);
+    border-radius: 0.9375rem;
+    padding: 1.25rem;
+    margin: 3rem auto;
     width: 90%;
+    max-width: 1200px;
 }
 
 .mision-vision-content {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .mision-vision-text {
-    width: 60%;
-    padding-right: 40px;
+    flex: 1 1 60%;
 }
 
 .mision-vision-text h3 {
-    font-size: 24px;
-    color: #fff;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: white;
+    margin-bottom: 0.625rem;
 }
 
 .mision-vision-text p {
-    font-size: 16px;
-    color: #fff;
-    line-height: 1.5;
+    font-size: 1rem;
+    color: white;
 }
 
 .mision-vision-image {
-    width: 40%;
+    flex: 1 1 30%;
     text-align: center;
 }
 
 .mision-vision-image img {
     max-width: 100%;
-    border-radius: 15px;
+    height: auto;
+    border-radius: 0.9375rem;
+    object-fit: cover;
 }
 
 /* Especialistas */
 .specialist-cards {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
-    max-width: 2000px; /* Aumentado a 2000px */
+    gap: 2rem;
     width: 90%;
-    margin: 100px auto;
+    max-width: 1200px;
+    margin: 3rem auto;
 }
 
 .specialist-card {
-    background-color: #6a8e61;
+    background-color: var(--secondary-color);
     color: white;
-    border-radius: 10px;
-    padding: 25px;
-    width: calc(33.333% - 20px);
+    border-radius: 0.625rem;
+    padding: 1.5625rem;
+    width: calc(33.333% - 2rem);
+    min-width: 250px;
     text-align: center;
-    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .specialist-card img {
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
     border-radius: 50%;
     object-fit: cover;
+    margin-bottom: 1rem;
 }
 
-/* Contenedor para las tarjetas de precios */
+/* Planes de precios */
 .pricing-container {
-    display: flex; /* Utiliza Flexbox para alinear las tarjetas en fila */
-    justify-content: center; /* Centra las tarjetas horizontalmente */
-    align-items: stretch; /* Asegura que todas las tarjetas tengan la misma altura */
-    gap: 35px; /* Espacio entre las tarjetas */
-    max-width: 100%; /* Ancho máximo del contenedor */
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
-    padding: 20px; /* Espaciado interno del contenedor */
-    flex-wrap: wrap; /* Permite que las tarjetas se ajusten en pantallas pequeñas */
-}
-
-/* Estilos para cada tarjeta de precio */
-.pricing-card {
-    background-color: #6a8e61; /* Color de fondo verde */
-    color: white; /* Color de texto blanco */
-    border-radius: 10px; /* Bordes redondeados */
-    padding: 20px; /* Espaciado interno de la tarjeta */
-    width: calc(33.333% - 200px); /* Ancho de cada tarjeta */
-    text-align: center; /* Centra el texto */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra de las tarjetas */
-    display: flex; /* Utiliza Flexbox para alinear los elementos internos */
-    flex-direction: column; /* Alinea los elementos en columna */
-    justify-content: center; /* Espacia uniformemente los elementos */
-    position: relative; /* Para posicionar elementos absolutos dentro de la tarjeta */
-    min-height: 400px; /* Altura mínima de las tarjetas */
-}
-
-/* Contenedor para los elementos internos de la tarjeta */
-.pricing-card .content {
-    display: flex; /* Utiliza Flexbox para alinear los elementos */
-    flex-direction: column; /* Alinea los elementos en columna */
-    justify-content: center; /* Espacia uniformemente los elementos */
-    align-items: center;
-    flex-grow: 1; /* Hace que el contenedor crezca para llenar el espacio */
-}
-
-/* Estilos para el título de la tarjeta */
-.pricing-card h3 {
-    font-size: 30px; /* Tamaño de la fuente para los títulos */
-    margin-bottom: 10px; /* Espacio inferior del título */
-}
-
-/* Contenedor para el precio */
-.price-wrapper {
-    font-size: 26px; /* Tamaño de la fuente para los precios */
-    font-weight: bold; /* Negrita para los precios */
-    margin: 10px 0; /* Espaciado superior e inferior del precio */
-    display: flex; /* Utiliza Flexbox para alinear el precio */
-    align-items: center; /* Centra verticalmente el precio */
-    justify-content: center; /* Centra horizontalmente el precio */
-}
-
-/* Estilos para la lista de características */
-.features {
-    list-style-type: none; /* Quita los puntos de la lista */
-    padding: 0; /* Quita el padding de la lista */
-    margin: 10px 0; /* Espaciado superior e inferior de la lista */
-    text-align: left; /* Centra el texto */
-    flex-grow: 1; /* Hace que la lista crezca para llenar el espacio disponible */
-    display: flex; /* Utiliza Flexbox para alinear los elementos */
-    flex-direction: column; /* Alinea los elementos en columna */
-    justify-content: center; /* Centra los elementos verticalmente */
-    align-items: center; /* Centra los elementos horizontalmente */
-}
-
-/* Estilos para cada elemento de la lista de características */
-.features li {
-    margin-bottom: 5px; /* Espacio inferior de cada elemento */
-    padding-left: 25px; /* Espacio a la izquierda de cada elemento */
-    position: relative; /* Para posicionar el icono de verificación */
-    text-align: left; /* Alinea el texto a la izquierda */
-}
-
-/* Estilos para el icono de verificación */
-.features li::before {
-    content: "✓"; /* Icono de verificación */
-    position: absolute; /* Posiciona el icono de forma absoluta */
-    left: 2px; /* Alinea el icono a la izquierda */
-    color: #e0d0a8; /* Color del icono */
-}
-
-/* Estilos para la etiqueta de mejor oferta */
-.best-offer {
-    background-color: #ffd466; /* Color de fondo amarillo */
-    color: #4a6741; /* Color de texto verde */
-    padding: 5px 10px; /* Espaciado interno de la etiqueta */
-    border-radius: 15px; /* Bordes redondeados */
-    font-size: 14px; /* Tamaño de la fuente */
-    font-weight: bold; /* Negrita para el texto */
-    position: absolute; /* Posiciona la etiqueta de forma absoluta */
-    top: -10px; /* Posiciona la etiqueta en la parte superior */
-    right: -10px; /* Posiciona la etiqueta a la derecha */
-}
-
-/* Estilos específicos para la sección de recetas */
-.recipe-cards {
     display: flex;
+    justify-content: center;
+    align-items: stretch;
     flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 2000px; /* Aumentado a 2000px */
+    gap: 2rem;
     width: 90%;
-    margin: 100px auto;
+    max-width: 1200px;
+    margin: 3rem auto;
 }
 
-.recipe-card {
-    background-color: #6a8e61;
+.pricing-card {
+    background-color: var(--secondary-color);
     color: white;
-    border-radius: 10px;
-    padding: 20px;
-    width: calc(33.333% - 20px);
+    border-radius: 0.625rem;
+    padding: 1.25rem;
+    width: calc(33.333% - 2rem);
+    min-width: 250px;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 30px;
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+}
+
+.pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.625rem;
+}
+
+.price-wrapper {
+    font-size: 1.625rem;
+    font-weight: bold;
+    margin: 0.625rem 0;
+}
+
+.features {
+    list-style-type: none;
+    padding: 0;
+    margin: 0.625rem 0;
+    text-align: left;
+}
+
+.features li {
+    margin-bottom: 0.3125rem;
+    padding-left: 1.5625rem;
+    position: relative;
+}
+
+.features li::before {
+    content: "✓";
+    position: absolute;
+    left: 0.125rem;
+    color: var(--accent-color);
+}
+
+.best-offer {
+    background-color: #ffd466;
+    color: var(--primary-color);
+    padding: 0.3125rem 0.625rem;
+    border-radius: 0.9375rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+    position: absolute;
+    top: -0.625rem;
+    right: -0.625rem;
+}
+
+/* Recetas */
+.recipe-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    width: 90%;
+    max-width: 1200px;
+    margin: 3rem auto;
+}
+
+.recipe-card {
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 0.625rem;
+    padding: 1.25rem;
+    width: calc(33.333% - 2rem);
+    min-width: 250px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .recipe-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #e0d0a8;
+    font-size: 1.25rem;
+    margin-bottom: 0.625rem;
+    color: var(--accent-color);
 }
 
 .recipe-card p {
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 1.4;
-    margin-bottom: 15px;
+    margin-bottom: 0.9375rem;
 }
 
-.recipe-card .cta-button {
-    align-self: center;
-}
 /* Contacto */
 .contact-container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
-    max-width: 2000px; /* Aumentado a 2000px */
+    gap: 2rem;
     width: 90%;
-    margin: 100px auto;
+    max-width: 1200px;
+    margin: 3rem auto;
 }
 
 .contact-info,
 .contact-form {
-    flex: 1 1 calc(33.333% - 10px);
-}
-
-.contact-info h3 {
-    margin-top: 0;
+    flex: 1 1 calc(50% - 1rem);
+    min-width: 250px;
 }
 
 .contact-form input,
 .contact-form textarea {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 0.625rem;
+    margin-bottom: 0.625rem;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
 }
 
 .contact-form button {
     width: 100%;
-    padding: 10px;
-    background-color: #4a6741;
+    padding: 0.625rem;
+    background-color: var(--primary-color);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .contact-form button:hover {
-    background-color: #6a8e61;
+    background-color: var(--secondary-color);
 }
 
-
-/* Estilos para la nueva sección de ubicación */
-#ubicacion {
-    background-color: #f9f5f0;
-    padding: 50px 0;
-}
-
+/* Ubicación */
 .ubicacion-container {
-    max-width: 1700px; /* Ajustado para coincidir con otras secciones */
     width: 90%;
+    max-width: 1200px;
     margin: 0 auto;
     text-align: center;
 }
 
 .mapa {
-    width: 100%; /* Cambiado de 130% a 100% */
-    height: 800px; /* Reducido de 900px a 600px para mejor proporción */
+    width: 100%;
+    height: 400px;
     border: none;
-    margin: 20px auto 0; /* Centrado horizontalmente */
-    display: block; /* Asegura que el margen auto funcione */
+    margin: 1.25rem auto 0;
+    display: block;
 }
 
 /* Footer */
 footer {
-    background-color: #4a6741;
+    background-color: var(--primary-color);
     color: white;
     text-align: center;
-    padding: 10px 0;
+    padding: 0.625rem 0;
 }
 
 /* Botón para volver al tope */
@@ -406,8 +397,8 @@ footer {
     z-index: 100;
     border: none;
     outline: none;
-    background-color: #d0c098;
-    color: white;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
     cursor: pointer;
     padding: 15px;
     border-radius: 50%;
@@ -415,46 +406,254 @@ footer {
 }
 
 #scrollTopButton:hover {
-    background-color: #97a993;
+    background-color: #d0c098;
+}
+
+
+/* Estilos generales */
+:root {
+    --primary-color: #4a6741;
+    --secondary-color: #6a8e61;
+    --accent-color: #edb06a;
+    --text-color: #333;
+    --background-color: #f9f5f0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Estilos del contenedor de login */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex: 1;
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.login-left,
+.login-right {
+    flex: 1;
+    max-width: 450px;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.login-left {
+    background-color: var(--secondary-color);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.login-left-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+}
+
+.background-image {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.login-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.login-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.contact-info {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+}
+
+.login-right {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos de formulario */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem; /* Ajusta esto si el ícono es demasiado pequeño */
+    padding: 0;
+    color: var(--text-color);
+}
+
+.relative {
+    position: relative;
+}
+
+.login-button {
+    margin-top: 1rem;
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+}
+
+.login-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 1rem;
+}
+
+.login-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+}
+
+/* Estilos del footer */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+/* Estilos generales para otras páginas */
+.cta-button {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    border: none;
+    padding: 0.625rem 1.25rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 1.5625rem;
+    transition: background-color 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 0.625rem;
 }
 
 /* Media Queries */
 @media (max-width: 1200px) {
-    .pricing-container {
-        flex-direction: column;
+    .specialist-card,
+    .pricing-card,
+    .recipe-card {
+        width: calc(50% - 2rem);
     }
-    .pricing-card {
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .login-left,
+    .login-right {
+        max-width: 100%;
         width: 100%;
-        margin-bottom: 20px;
+        margin: 10px 0;
     }
-    .mision-vision-content {
-        flex-direction: column;
+
+    header h1 {
+        font-size: 1.5rem;
     }
+
+    nav ul li a {
+        padding: 0.5rem 1rem;
+        font-size: 0.875rem;
+    }
+
+    .specialist-card,
+    .pricing-card,
+    .recipe-card {
+        width: 100%;
+    }
+
     .mision-vision-text,
-    .mision-vision-image {
-        width: 100%;
-        padding-right: 0;
-    }
-    .mision-vision-image {
-        margin-top: 20px;
-    }
-    .mision-vision-image img {
-        max-width: 80%;
-    }
-    .contact-container {
-        flex-direction: column;
-    }
+    .mision-vision-image,
     .contact-info,
     .contact-form {
         flex: 1 1 100%;
-        margin-right: 0;
-    }
-    .section-content {
-        padding: 20px;
-    }
-    .specialist-card,
-    .recipe-card {
-        width: calc(45% - 20px);
     }
 }
-</antA>
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    h2, .login-title {
+        font-size: 1.5rem;
+    }
+
+    .login-subtitle,
+    .cta-button {
+        font-size: 0.875rem;
+    }
+
+    .cta-button {
+        padding: 0.5rem 1rem;
+    }
+
+    .food-images img {
+        max-width: 120px;
+    }
+
+    .login-left,
+    .login-right {
+        padding: 1.5rem;
+    }
+}
