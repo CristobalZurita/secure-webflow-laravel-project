@@ -4,35 +4,26 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
-        $this->middleware('auth')->except(['welcome']);
+        $this->middleware('auth')->except(['welcome', 'index', 'loadSection']);
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
         return view('home');
     }
 
-    /**
-     * Show the welcome page.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function welcome()
     {
         return view('welcome');
+    }
+
+    public function loadSection($section)
+    {
+        return view("partials.$section");
     }
 }

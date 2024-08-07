@@ -30,29 +30,24 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
 Route::post('/forgot-password', [AuthController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::post('login', 'AuthController@login');
-
 
 // Rutas de autenticación
 Auth::routes();
-
 
 // Rutas para la autenticación de doble factor (2FA)
 Route::get('2fa', [LoginController::class, 'showTwoFactorForm'])->name('2fa.form');
 Route::post('2fa', [LoginController::class, 'verifyTwoFactor'])->name('2fa.verify');
 
+// Middleware de tasa de limitación para login
+Route::post('login', [LoginController::class, 'login'])->middleware('throttle:10,1']);
+
 // Rutas protegidas
 Route::middleware(['auth', 'verified'])->group(function () {
     // Otras rutas protegidas
+    Route::get('/agendar-cita', [AppointmentController::class, 'showAppointmentForm'])->name('appointment.form');
+    Route::post('/agendar-cita', [AppointmentController::class, 'scheduleAppointment'])->name('appointment.schedule');
+    Route::get('/available-slots', [AppointmentController::class, 'getAvailableSlots'])->name('appointment.slots');
 });
 
-// Middleware de tasa de limitación para login
-Route::post('login', [LoginController::class, 'login'])->middleware('throttle:10,1');
-
-// Rutas para agendar citas
-Route::get('/agendar-cita', [AppointmentController::class, 'showAppointmentForm'])->name('appointment.form');
-Route::post('/agendar-cita', [AppointmentController::class, 'scheduleAppointment'])->name('appointment.schedule');
-Route::get('/available-slots', [AppointmentController::class, 'getAvailableSlots'])->name('appointment.slots');
-Auth::routes();
-
+// Ruta duplicada de inicio (eliminar la duplicada al final)
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
