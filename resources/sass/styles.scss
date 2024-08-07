@@ -1,437 +1,711 @@
-/* Variables */
-:root {
-    --primary-color: #4a6741;
-    --secondary-color: #6a8e61;
-    --accent-color: #ffdab0;
-    --text-color: #333;
-    --background-color: #f9f5f0;
+// Variables
+$primary-color: #4a6741;
+$secondary-color: #6a8e61;
+$accent-color: #ffdab0;
+$text-color: #333;
+$background-color: #f9f5f0;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Estilos generales */
+@mixin section-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// Estilos generales
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    font-size: 16px;
-    line-height: 1.5;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: $background-color;
+  color: $text-color;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-/* Encabezado */
+// Encabezado
 header {
-    background-color: var(--primary-color);
-    padding: 1.25rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
+  background-color: $primary-color;
+  padding: 1.25rem 0;
+  @include flex-center;
+  color: white;
 
-    &.sticky {
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
+  &.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
 
-    .header-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        width: 90%;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 1rem;
-    }
+  .header-content {
+    @include flex-center;
+    flex-direction: column;
+    text-align: center;
+    @include section-container;
+    padding: 1rem;
+  }
 
-    h1 {
-        margin: 0;
-        padding: 0.5em 0;
-        font-size: 2rem;
-    }
+  h1 {
+    margin: 0;
+    padding: 0.5em 0;
+    font-size: 2rem;
+  }
 }
 
-/* Navegación */
-nav ul {
-    display: flex;
-    justify-content: center;
+// Navegación
+nav {
+  ul {
+    @include flex-center;
     flex-wrap: nowrap;
     padding: 0.5rem;
     margin: 1rem 0 0;
     list-style-type: none;
-    background-color: var(--secondary-color);
+    background-color: $secondary-color;
     border-radius: 1.5625rem;
 
     li {
-        padding: 0;
-        margin: 0 0.15rem;
+      padding: 0;
+      margin: 0 0.15rem;
 
-        a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem 0.75rem;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-            white-space: nowrap;
-            display: block;
+      a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 0.5rem 0.75rem;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+        white-space: nowrap;
+        display: block;
 
-            &:hover,
-            &.active {
-                color: var(--accent-color);
-            }
+        &:hover,
+        &.active {
+          color: $accent-color;
         }
+      }
     }
+  }
 }
 
-/* Secciones */
+// Secciones
 section {
-    padding: 3rem 1rem;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h2 {
+    color: $primary-color;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .centered-text {
+    text-align: center;
+    font-weight: bold;
+    margin: 1.25rem 0;
+  }
+}
+
+// Botones
+.cta-button {
+  background-color: $accent-color;
+  color: $primary-color;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 1.5625rem;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 0.625rem;
+
+  &:hover {
+    background-color: darken($accent-color, 10%);
+  }
+}
+
+// Sección de Inicio
+#home {
+  text-align: center;
+
+  .food-images {
+    @include flex-center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.2rem;
+
+    img {
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+      border-radius: 0.625rem;
+      object-fit: cover;
+    }
+  }
+}
+
+// Misión y Visión
+.mision-vision-container {
+  background-color: $secondary-color;
+  border-radius: 0.9375rem;
+  padding: 2rem;
+  margin: 3rem auto;
+  @include section-container;
+
+  .mision-vision-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+    .mision-vision-text {
+      flex: 1 1 60%;
+
+      h2 {
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        color: white;
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .mision-vision-image {
+      flex: 1 1 30%;
+      text-align: right;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.9375rem;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+// Especialistas
+.specialist-cards {
+  @include flex-center;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  @include section-container;
+  margin: 3rem auto;
+
+  .specialist-card {
+    background-color: $secondary-color;
+    color: white;
+    border-radius: 0.625rem;
+    padding: 1.5625rem;
+    flex: 1;
+    min-width: 0;
+    max-width: calc(33.333% - 2rem);
+    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 
-    h2 {
-        color: var(--primary-color);
-        text-align: center;
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
+    img {
+      width: 100%;
+      max-width: 150px;
+      height: auto;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
     }
-
-    .centered-text {
-        text-align: center;
-        font-weight: bold;
-        margin: 1.25rem 0;
-    }
+  }
 }
 
-/* Botones */
-.cta-button {
-    background-color: var(--accent-color);
-    color: var(--primary-color);
-    border: none;
-    padding: 0.625rem 1.25rem;
-    font-size: 1rem;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 1.5625rem;
-    transition: background-color 0.3s;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 0.625rem;
-
-    &:hover {
-        background-color: #d0c098;
-    }
-}
-
-/* Sección de Inicio */
-#home {
-    text-align: center;
-
-    .food-images {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin-top: 1.2rem;
-
-        img {
-            width: 100%;
-            max-width: 150px;
-            height: auto;
-            border-radius: 0.625rem;
-            object-fit: cover;
-        }
-    }
-}
-
-/* Misión y Visión */
-.mision-vision-container {
-    background-color: var(--secondary-color);
-    border-radius: 0.9375rem;
-    padding: 2rem;
-    margin: 3rem auto;
-    width: 90%;
-    max-width: 1200px;
-
-    .mision-vision-content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 2rem;
-
-        .mision-vision-text {
-            flex: 1 1 60%;
-
-            h2 {
-                color: white;
-                font-size: 2rem;
-                margin-bottom: 1rem;
-            }
-
-            p {
-                color: white;
-                font-size: 1rem;
-                line-height: 1.5;
-                margin-bottom: 1.5rem;
-            }
-        }
-
-        .mision-vision-image {
-            flex: 1 1 30%;
-            text-align: right;
-
-            img {
-                max-width: 100%;
-                height: auto;
-                border-radius: 0.9375rem;
-                object-fit: cover;
-            }
-        }
-    }
-}
-
-/* Especialistas */
-.specialist-cards {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    gap: 2rem;
-    width: 100%;
-    max-width: 1200px;
-    margin: 3rem auto;
-
-    .specialist-card {
-        background-color: var(--secondary-color);
-        color: white;
-        border-radius: 0.625rem;
-        padding: 1.5625rem;
-        flex: 1;
-        min-width: 0;
-        max-width: calc(33.333% - 2rem);
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-
-        img {
-            width: 100%;
-            max-width: 150px;
-            height: auto;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 1rem;
-        }
-    }
-}
-
-/* Planes de Precios */
+// Planes de Precios
 .pricing-container {
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-    gap: 2rem;
-    width: 100%;
-    max-width: 1200px;
-    margin: 3rem auto;
+  @include flex-center;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  @include section-container;
+  margin: 3rem auto;
 
-    .pricing-card {
-        background-color: var(--secondary-color);
-        color: white;
-        border-radius: 0.625rem;
-        padding: 1.5625rem;
-        flex: 1;
-        min-width: 0;
-        max-width: calc(33.333% - 2rem);
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
-
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.625rem;
-        }
-
-        .price-wrapper {
-            font-size: 1.625rem;
-            font-weight: bold;
-            margin: 0.625rem 0;
-        }
-
-        .features {
-            list-style-type: none;
-            padding: 0;
-            margin: 0.625rem 0;
-            text-align: left;
-
-            li {
-                margin-bottom: 0.3125rem;
-                padding-left: 1.5625rem;
-                position: relative;
-
-                &::before {
-                    content: "✓";
-                    position: absolute;
-                    left: 0;
-                    color: var(--accent-color);
-                }
-            }
-        }
-
-        .best-offer {
-            background-color: #ffd466;
-            color: var(--primary-color);
-            padding: 0.3125rem 0.625rem;
-            border-radius: 0.9375rem;
-            font-size: 0.875rem;
-            font-weight: bold;
-            position: absolute;
-            top: -0.625rem;
-            right: -0.625rem;
-        }
-    }
-}
-
-/* Recetas */
-.recipe-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
-    width: 90%;
-    max-width: 1200px;
-    margin: 3rem auto;
-
-    .recipe-card {
-        background-color: var(--secondary-color);
-        color: white;
-        border-radius: 0.625rem;
-        padding: 1.25rem;
-        width: calc(33.333% - 2rem);
-        min-width: 250px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.625rem;
-            color: var(--accent-color);
-        }
-
-        p {
-            font-size: 0.875rem;
-            line-height: 1.4;
-            margin-bottom: 0.9375rem;
-        }
-    }
-}
-
-/* Contacto */
-.contact-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2rem;
-    width: 90%;
-    max-width: 1200px;
-    margin: 3rem auto;
-
-    .contact-info,
-    .contact-form {
-        flex: 1 1 calc(50% - 1rem);
-        min-width: 250px;
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 0.625rem;
-            border: 1px solid var(--primary-color);
-            border-radius: 0.3125rem;
-            margin-bottom: 0.625rem;
-            font-size: 1rem;
-            color: var(--text-color);
-
-            &:focus {
-                outline: none;
-                border-color: var(--secondary-color);
-            }
-        }
-
-        button {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 0.625rem 1.25rem;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 0.3125rem;
-            transition: background-color 0.3s;
-
-            &:hover {
-                background-color: var(--accent-color);
-            }
-        }
-    }
-}
-
-/* Footer */
-footer {
-    background-color: var(--primary-color);
+  .pricing-card {
+    background-color: $secondary-color;
     color: white;
-    padding: 1.25rem 0;
+    border-radius: 0.625rem;
+    padding: 1.5625rem;
+    flex: 1;
+    min-width: 0;
+    max-width: calc(33.333% - 2rem);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    position: relative;
 
-    .social-icons {
-        display: flex;
-        justify-content: center;
-        margin: 0.625rem 0;
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.625rem;
+    }
 
-        a {
-            color: white;
-            margin: 0 0.3125rem;
-            font-size: 1.25rem;
-            transition: color 0.3s;
+    .price-wrapper {
+      font-size: 1.625rem;
+      font-weight: bold;
+      margin: 0.625rem 0;
+    }
 
-            &:hover {
-                color: var(--accent-color);
-            }
+    .features {
+      list-style-type: none;
+      padding: 0;
+      margin: 0.625rem 0;
+      text-align: left;
+
+      li {
+        margin-bottom: 0.3125rem;
+        padding-left: 1.5625rem;
+        position: relative;
+
+        &::before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          color: $accent-color;
         }
+      }
+    }
+
+    .best-offer {
+      background-color: lighten($accent-color, 10%);
+      color: $primary-color;
+      padding: 0.3125rem 0.625rem;
+      border-radius: 0.9375rem;
+      font-size: 0.875rem;
+      font-weight: bold;
+      position: absolute;
+      top: -0.625rem;
+      right: -0.625rem;
+    }
+  }
+}
+
+// Recetas
+.recipe-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  @include section-container;
+  margin: 3rem auto;
+
+  .recipe-card {
+    background-color: $secondary-color;
+    color: white;
+    border-radius: 0.625rem;
+    padding: 1.25rem;
+    width: calc(33.333% - 2rem);
+    min-width: 250px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.625rem;
+      color: $accent-color;
     }
 
     p {
-        margin: 0.625rem 0;
+      font-size: 0.875rem;
+      line-height: 1.4;
+      margin-bottom: 0.9375rem;
     }
+  }
 }
 
-/* Media queries */
+// Contacto
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  @include section-container;
+  margin: 3rem auto;
+
+  .contact-info,
+  .contact-form {
+    flex: 1 1 calc(50% - 1rem);
+    min-width: 250px;
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.625rem;
+      border: 1px solid $primary-color;
+      border-radius: 0.3125rem;
+      margin-bottom: 0.625rem;
+      font-size: 1rem;
+      color: $text-color;
+
+      &:focus {
+        outline: none;
+        border-color: $secondary-color;
+      }
+    }
+
+    button {
+      background-color: $primary-color;
+      color: white;
+      border: none;
+      padding: 0.625rem 1.25rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 0.3125rem;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: $accent-color;
+      }
+    }
+  }
+}
+
+// Footer
+footer {
+  background-color: $primary-color;
+  color: white;
+  padding: 1.25rem 0;
+  text-align: center;
+
+  .social-icons {
+    @include flex-center;
+    margin: 0.625rem 0;
+
+    a {
+      color: white;
+      margin: 0 0.3125rem;
+      font-size: 1.25rem;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+
+  p {
+    margin: 0.625rem 0;
+  }
+}
+
+// Scroll Top Button
+#scrollTopButton {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: $primary-color;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 18px;
+
+  &:hover {
+    background-color: $accent-color;
+  }
+}
+
+// Menu Toggle para móvil
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+// Media queries
+@media (max-width: 1024px) {
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  nav ul li {
+    margin: 0.25rem;
+  }
+
+  nav ul li a {
+    font-size: 1rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .specialist-cards,
+  .pricing-container {
+    flex-wrap: wrap;
+  }
+
+  .specialist-card,
+  .pricing-card {
+    flex-basis: calc(50% - 1rem);
+    max-width: calc(50% - 1rem);
+  }
+}
+
 @media (max-width: 768px) {
-    nav ul {
-        flex-wrap: wrap;
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+
+    &.active {
+      display: flex;
     }
 
-    .mision-vision-content {
-        flex-direction: column;
+    li {
+      width: 100%;
+      text-align: center;
+      margin: 0.5rem 0;
 
-        .mision-vision-image {
-            text-align: center;
-        }
+      a {
+        display: block;
+        padding: 0.75rem;
+      }
     }
+  }
 
-    .specialist-cards,
-    .pricing-container,
-    .recipe-cards {
-        flex-direction: column;
-        gap: 1rem;
-    }
+  .specialist-cards,
+  .pricing-container,
+  .recipe-cards {
+    flex-direction: column;
+  }
 
-    .contact-container {
-        flex-direction: column;
-        gap: 1rem;
-    }
+  .specialist-card,
+  .pricing-card,
+  .recipe-card {
+    width: 100%;
+    max-width: none;
+  }
+
+  .mision-vision-content {
+    flex-direction: column;
+  }
+
+  .mision-vision-text,
+  .mision-vision-image {
+    flex: 1 1 100%;
+  }
+
+  .mision-vision-image {
+    text-align: center;
+    margin-top: 1rem;
+  }
+
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-left,
+  .login-right {
+    width: 100%;
+  }
 }
+
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  nav ul {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  body {
+    font-size: 18px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  nav ul li a {
+    font-size: 1.2rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .section-content {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  .specialist-card,
+  .pricing-card,
+  .recipe-card {
+    padding: 2rem;
+  }
+
+  .login-left,
+  .login-right {
+    padding: 3rem;
+  }
+
+  .login-form {
+    max-width: 500px;
+  }
+}
+
+
+// Estilos específicos para la página de ingreso
+.login-container {
+    display: flex;
+    min-height: calc(100vh - 200px);
+    padding: 0;
+  }
+  
+  .login-left {
+    flex: 1;
+    background-color: $secondary-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  
+    .background-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: auto;
+      opacity: 0.1;
+      z-index: 0;
+    }
+  
+    .login-left-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+  
+    .login-title {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .login-subtitle {
+      font-size: 1.2rem;
+    }
+  
+    .contact-info {
+      position: relative;
+      z-index: 1;
+      margin-top: auto;
+  
+      p {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+  
+  .login-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    background-color: white;
+  }
+  
+  .login-form {
+    max-width: 400px;
+    margin: 0 auto;
+  
+    .form-group {
+      margin-bottom: 1.5rem;
+  
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+  
+      input {
+        width: 100%;
+        padding: 0.625rem;
+        border: 1px solid #ccc;
+        border-radius: 0.3125rem;
+      }
+    }
+  
+    .relative {
+      position: relative;
+    }
+  
+    .password-toggle {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  
+    .login-button {
+      width: 100%;
+    }
+  }
+  
+  .login-links {
+    margin-top: 1rem;
+    text-align: center;
+  
+    a {
+      display: block;
+      margin: 0.5rem 0;
+      color: $primary-color;
+      text-decoration: none;
+    }
+  }
+  
+  // Media queries
+  @media (max-width: 768px) {
+    .login-container {
+      flex-direction: column;
+    }
+  
+    .login-left,
+    .login-right {
+      width: 100%;
+    }
+  }
