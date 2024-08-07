@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Funcionalidad de toggle de contraseña
     const passwordToggle = document.querySelector('.password-toggle');
     const passwordInput = document.getElementById('password');
     
     if (passwordToggle && passwordInput) {
-        // Asegurarse de que el ícono del ojo sea visible inicialmente
         passwordToggle.textContent = '👁️';
         
         passwordToggle.addEventListener('click', function() {
@@ -12,14 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
             this.textContent = type === 'password' ? '👁️' : '👁️‍🗨️';
         });
     }
-});
 
     // Validación de formulario de inicio de sesión
     const loginForm = document.getElementById('login-form');
     if (loginForm) {
         loginForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            if (grecaptcha.getResponse() == "") {
+            if (grecaptcha && grecaptcha.getResponse() == "") {
                 alert("Por favor, completa el captcha");
                 return false;
             }
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (registerForm) {
         registerForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            if (grecaptcha.getResponse() == "") {
+            if (grecaptcha && grecaptcha.getResponse() == "") {
                 alert("Por favor, completa el captcha");
                 return false;
             }
@@ -54,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Navegación activa
     const navLinks = document.querySelectorAll('nav ul li a');
     const sections = document.querySelectorAll('section');
 
@@ -97,20 +97,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const telefono = contactForm.querySelector('input[name="telefono"]').value.trim();
             const mensaje = contactForm.querySelector('textarea[name="mensaje"]').value.trim();
 
-            // Validación del nombre
             if (nombre === '') {
                 alert('Por favor, ingrese su nombre.');
                 return;
             }
 
-            // Validación del correo electrónico
             const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
             if (!emailRegex.test(correo)) {
                 alert('Por favor, ingrese una dirección de correo electrónico válida.');
                 return;
             }
 
-            // Validación del teléfono
             if (telefono !== '') {
                 const phoneRegex = /^\+[0-9]{11,}$/;
                 if (!phoneRegex.test(telefono)) {
@@ -119,21 +116,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Validación del mensaje
             if (mensaje === '') {
                 alert('Por favor, ingrese un mensaje.');
                 return;
             }
 
-            // Si todo está bien, envía el formulario
             alert('Formulario enviado correctamente. Gracias por contactarnos!');
             contactForm.reset();
         });
     }
 
     // Funcionalidad para mostrar el botón de scroll
-    window.onscroll = function() {scrollFunction()};
-
     function scrollFunction() {
         var scrollTopButton = document.getElementById("scrollTopButton");
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -143,7 +136,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    window.addEventListener('scroll', scrollFunction);
+
     // Funcionalidad para volver al tope de la página
     window.scrollToTop = function() {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
+    
+    // Menú móvil
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('nav ul');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+    }
+});
