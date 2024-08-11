@@ -1,5 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Funcionalidad de toggle de contraseña
+    // Validación y envío del formulario de contacto
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Obtención y sanitización de los valores del formulario
+            const nombre = contactForm.querySelector('input[name="nombre"]').value.trim();
+            const correo = contactForm.querySelector('input[name="correo"]').value.trim();
+            const mensaje = contactForm.querySelector('textarea[name="mensaje"]').value.trim();
+
+            // Validación del campo "nombre"
+            if (nombre === '') {
+                alert('Por favor, ingrese su nombre.');
+                return;
+            }
+
+            // Validación del campo "correo" utilizando una expresión regular
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!emailRegex.test(correo)) {
+                alert('Por favor, ingrese una dirección de correo electrónico válida.');
+                return;
+            }
+
+            // Validación del campo "mensaje" excluyendo los caracteres peligrosos
+            const messageRegex = /^[a-zA-Z0-9\s.,:;!?()-]*$/;
+            if (!messageRegex.test(mensaje)) {
+                alert('El mensaje contiene caracteres no permitidos. Solo se permiten letras, números y los siguientes símbolos: .,:;!?()-');
+                return;
+            }
+
+            // Validación adicional para asegurar que el mensaje no esté vacío
+            if (mensaje === '') {
+                alert('Por favor, ingrese un mensaje.');
+                return;
+            }
+
+            // Si todas las validaciones pasan, se envía el formulario
+            alert('Formulario enviado correctamente. Gracias por contactarnos!');
+            contactForm.reset();
+        });
+    }
+
+    // Funcionalidad de toggle de contraseña (muestra/oculta la contraseña)
     const passwordToggle = document.querySelector('.password-toggle');
     const passwordInput = document.getElementById('password');
     
@@ -53,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Navegación activa
+    // Resaltar la navegación activa según la sección visible
     const navLinks = document.querySelectorAll('nav ul li a');
     const sections = document.querySelectorAll('section');
 
@@ -68,9 +111,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         navLinks.forEach(link => {
-            link.classList.remove('active');
+            link.classList.remove('activo');
             if (link.getAttribute('href').slice(1) === current) {
-                link.classList.add('active');
+                link.classList.add('activo');
             }
         });
     }
@@ -86,49 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Validación y envío del formulario de contacto
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const nombre = contactForm.querySelector('input[name="nombre"]').value.trim();
-            const correo = contactForm.querySelector('input[name="correo"]').value.trim();
-            const telefono = contactForm.querySelector('input[name="telefono"]').value.trim();
-            const mensaje = contactForm.querySelector('textarea[name="mensaje"]').value.trim();
-
-            if (nombre === '') {
-                alert('Por favor, ingrese su nombre.');
-                return;
-            }
-
-            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-            if (!emailRegex.test(correo)) {
-                alert('Por favor, ingrese una dirección de correo electrónico válida.');
-                return;
-            }
-
-            if (telefono !== '') {
-                const phoneRegex = /^\+[0-9]{11,}$/;
-                if (!phoneRegex.test(telefono)) {
-                    alert('Por favor, ingrese un número de teléfono válido (formato: +56982859548).');
-                    return;
-                }
-            }
-
-            if (mensaje === '') {
-                alert('Por favor, ingrese un mensaje.');
-                return;
-            }
-
-            alert('Formulario enviado correctamente. Gracias por contactarnos!');
-            contactForm.reset();
-        });
-    }
-
-    // Funcionalidad para mostrar el botón de scroll
+    // Funcionalidad para mostrar el botón de scroll cuando se desplaza hacia abajo
     function scrollFunction() {
-        var scrollTopButton = document.getElementById("scrollTopButton");
+        const scrollTopButton = document.getElementById("scrollTopButton");
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
             scrollTopButton.style.display = "block";
         } else {
@@ -143,18 +146,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
     
-    // Menú móvil
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-    }
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+    // Menú móvil: Mostrar/Ocultar navegación
     const menuToggle = document.querySelector('.menu-toggle');
     const navMenu = document.querySelector('nav ul');
 

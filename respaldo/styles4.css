@@ -24,7 +24,7 @@ header.sticky {
   z-index: 1000;
 }
 
-header .contenido-encabezado {
+header .header-content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +39,7 @@ header .contenido-encabezado {
 header h1 {
   margin: 0;
   padding: 0.5em 0;
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 nav ul {
@@ -70,8 +70,7 @@ nav ul li a {
   display: block;
 }
 
-nav ul li a:hover,
-nav ul li a.activo {
+nav ul li a:hover, nav ul li a.active {
   color: #ffdab0;
 }
 
@@ -111,7 +110,28 @@ section .centered-text {
 }
 
 .cta-button:hover {
-  background-color: #fff2e3;
+  background-color: #ffc27d;
+}
+
+#home {
+  text-align: center;
+}
+
+#home .food-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+#home .food-images img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 0.625rem;
+  object-fit: cover;
 }
 
 .mision-vision-container {
@@ -121,121 +141,188 @@ section .centered-text {
   margin: 3rem auto;
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
 }
 
-.mision-vision-content {
+.mision-vision-container .mision-vision-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
 }
 
-.mision-vision-text {
+.mision-vision-container .mision-vision-content .mision-vision-text {
   flex: 1 1 60%;
 }
 
-.mision-vision-text h2 {
+.mision-vision-container .mision-vision-content .mision-vision-text h2 {
   color: white;
   font-size: 2rem;
   margin-bottom: 1rem;
 }
 
-.mision-vision-text p {
+.mision-vision-container .mision-vision-content .mision-vision-text p {
   color: white;
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
 }
 
-.mision-vision-image {
+.mision-vision-container .mision-vision-content .mision-vision-image {
   flex: 1 1 30%;
   text-align: right;
 }
 
-.mision-vision-image img {
+.mision-vision-container .mision-vision-content .mision-vision-image img {
   max-width: 100%;
   height: auto;
   border-radius: 0.9375rem;
   object-fit: cover;
 }
 
-/* Sección Especialistas */
 .specialist-cards {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 2rem;
-  margin: 3rem auto;
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
+  margin: 3rem auto;
 }
 
-.specialist-card {
+.specialist-cards .specialist-card {
   background-color: #6a8e61;
   color: white;
   border-radius: 0.625rem;
-  padding: 1.5rem;
-  text-align: center;
+  padding: 1.5625rem;
   flex: 1;
+  min-width: 0;
   max-width: calc(33.333% - 2rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
-.specialist-card img {
+.specialist-cards .specialist-card img {
   width: 100%;
   max-width: 150px;
+  height: auto;
   border-radius: 50%;
+  object-fit: cover;
   margin-bottom: 1rem;
 }
 
-.specialist-card h3 {
+.pricing-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin: 3rem auto;
+}
+
+.pricing-container .pricing-card {
+  background-color: #6a8e61;
+  color: white;
+  border-radius: 0.625rem;
+  padding: 1.5625rem;
+  flex: 1;
+  min-width: 0;
+  max-width: calc(33.333% - 2rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.pricing-container .pricing-card h3 {
   font-size: 1.5rem;
   margin-bottom: 0.625rem;
 }
 
-.specialist-card p {
-  font-size: 0.875rem;
-  margin-bottom: 0.9375rem;
+.pricing-container .pricing-card .price-wrapper {
+  font-size: 1.625rem;
+  font-weight: bold;
+  margin: 0.625rem 0;
 }
 
-/* Sección Recetas */
+.pricing-container .pricing-card .features {
+  list-style-type: none;
+  padding: 0;
+  margin: 0.625rem 0;
+  text-align: left;
+}
+
+.pricing-container .pricing-card .features li {
+  margin-bottom: 0.3125rem;
+  padding-left: 1.5625rem;
+  position: relative;
+}
+
+.pricing-container .pricing-card .features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #ffdab0;
+}
+
+.pricing-container .pricing-card .best-offer {
+  background-color: #ffdab0;
+  color: #4a6741;
+  padding: 0.3125rem 0.625rem;
+  border-radius: 0.9375rem;
+  font-size: 0.875rem;
+  font-weight: bold;
+  position: absolute;
+  top: -0.625rem;
+  right: -0.625rem;
+}
+
 .recipe-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
   margin: 3rem auto;
 }
 
-.recipe-card {
+.recipe-cards .recipe-card {
   background-color: #6a8e61;
   color: white;
   border-radius: 0.625rem;
-  padding: 1.5rem;
+  padding: 1.25rem;
+  width: calc(33.333% - 2rem);
+  min-width: 250px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.recipe-card img {
-  width: 100%;
-  max-width: 150px;
-  border-radius: 50%;
-  margin: 0 auto 1rem;
+.recipe-cards .recipe-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.625rem;
+  color: #ffdab0;
 }
 
-@media (max-width: 1024px) {
-  .recipe-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.recipe-cards .recipe-card p {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin-bottom: 0.9375rem;
 }
-@media (max-width: 768px) {
-  .recipe-cards {
-    grid-template-columns: 1fr;
-  }
-}
+
 .contact-container {
   display: flex;
   justify-content: space-between;
@@ -243,19 +330,20 @@ section .centered-text {
   gap: 2rem;
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
   margin: 3rem auto;
 }
 
-.contact-info,
-.contact-form {
+.contact-container .contact-info,
+.contact-container .contact-form {
   flex: 1 1 calc(50% - 1rem);
   min-width: 250px;
 }
 
-.contact-info input,
-.contact-info textarea,
-.contact-form input,
-.contact-form textarea {
+.contact-container .contact-info input,
+.contact-container .contact-info textarea,
+.contact-container .contact-form input,
+.contact-container .contact-form textarea {
   width: 100%;
   padding: 0.625rem;
   border: 1px solid #4a6741;
@@ -265,16 +353,16 @@ section .centered-text {
   color: #333;
 }
 
-.contact-info input:focus,
-.contact-info textarea:focus,
-.contact-form input:focus,
-.contact-form textarea:focus {
+.contact-container .contact-info input:focus,
+.contact-container .contact-info textarea:focus,
+.contact-container .contact-form input:focus,
+.contact-container .contact-form textarea:focus {
   outline: none;
   border-color: #6a8e61;
 }
 
-.contact-info button,
-.contact-form button {
+.contact-container .contact-info button,
+.contact-container .contact-form button {
   background-color: #4a6741;
   color: white;
   border: none;
@@ -285,8 +373,8 @@ section .centered-text {
   transition: background-color 0.3s;
 }
 
-.contact-info button:hover,
-.contact-form button:hover {
+.contact-container .contact-info button:hover,
+.contact-container .contact-form button:hover {
   background-color: #ffdab0;
 }
 
@@ -415,6 +503,21 @@ footer p {
     text-align: center;
     margin-top: 1rem;
   }
+  .login-container {
+    flex-direction: column;
+  }
+  .login-left,
+  .login-right {
+    width: 100%;
+  }
+}
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+  nav ul {
+    display: flex !important;
+  }
 }
 @media (min-width: 1440px) {
   body {
@@ -438,6 +541,13 @@ footer p {
   .pricing-card,
   .recipe-card {
     padding: 2rem;
+  }
+  .login-left,
+  .login-right {
+    padding: 3rem;
+  }
+  .login-form {
+    max-width: 500px;
   }
 }
 .login-container {
@@ -465,6 +575,7 @@ footer p {
   transform: translate(-50%, -50%);
   width: 100%;
   height: auto;
+  opacity: 0.1;
   z-index: 0;
 }
 
@@ -589,36 +700,6 @@ iframe.mapa {
     height: 300px;
   }
 }
-@media (max-width: 1024px) {
-  .login-container {
-    flex-direction: column;
-  }
-  .login-left,
-  .login-right {
-    width: 100%;
-    padding: 1rem;
-  }
-  .login-form {
-    width: 90%;
-    margin: 0 auto;
-  }
-}
-@media (max-width: 768px) {
-  .login-container {
-    flex-direction: column;
-  }
-  .login-left,
-  .login-right {
-    width: 100%;
-    padding: 1rem;
-  }
-  .login-form {
-    width: 100%;
-    padding: 0 1rem;
-  }
-  .background-image {
-    display: none;
-  }
-}
+
 
 /*# sourceMappingURL=styles.css.map */

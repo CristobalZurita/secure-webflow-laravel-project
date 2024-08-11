@@ -17,13 +17,11 @@ header {
   align-items: center;
   color: white;
 }
-
 header.sticky {
   position: sticky;
   top: 0;
   z-index: 1000;
 }
-
 header .contenido-encabezado {
   display: flex;
   justify-content: center;
@@ -35,7 +33,6 @@ header .contenido-encabezado {
   margin: 0 auto;
   padding: 1rem;
 }
-
 header h1 {
   margin: 0;
   padding: 0.5em 0;
@@ -53,12 +50,10 @@ nav ul {
   background-color: #6a8e61;
   border-radius: 1.5625rem;
 }
-
 nav ul li {
   padding: 0;
   margin: 0 0.15rem;
 }
-
 nav ul li a {
   color: white;
   text-decoration: none;
@@ -69,9 +64,7 @@ nav ul li a {
   white-space: nowrap;
   display: block;
 }
-
-nav ul li a:hover,
-nav ul li a.activo {
+nav ul li a:hover, nav ul li a.activo {
   color: #ffdab0;
 }
 
@@ -81,14 +74,12 @@ section {
   flex-direction: column;
   align-items: center;
 }
-
 section h2 {
   color: #4a6741;
   text-align: center;
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
-
 section .centered-text {
   text-align: center;
   font-weight: bold;
@@ -109,7 +100,6 @@ section .centered-text {
   display: inline-block;
   margin-top: 0.625rem;
 }
-
 .cta-button:hover {
   background-color: #fff2e3;
 }
@@ -121,121 +111,144 @@ section .centered-text {
   margin: 3rem auto;
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
 }
-
-.mision-vision-content {
+.mision-vision-container .mision-vision-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
 }
-
-.mision-vision-text {
+.mision-vision-container .mision-vision-content .mision-vision-text {
   flex: 1 1 60%;
 }
-
-.mision-vision-text h2 {
+.mision-vision-container .mision-vision-content .mision-vision-text h2 {
   color: white;
   font-size: 2rem;
   margin-bottom: 1rem;
 }
-
-.mision-vision-text p {
+.mision-vision-container .mision-vision-content .mision-vision-text p {
   color: white;
   font-size: 1rem;
   line-height: 1.5;
   margin-bottom: 1.5rem;
 }
-
-.mision-vision-image {
+.mision-vision-container .mision-vision-content .mision-vision-image {
   flex: 1 1 30%;
   text-align: right;
 }
-
-.mision-vision-image img {
+.mision-vision-container .mision-vision-content .mision-vision-image img {
   max-width: 100%;
   height: auto;
   border-radius: 0.9375rem;
   object-fit: cover;
 }
 
-/* Sección Especialistas */
 .specialist-cards {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 2rem;
-  margin: 3rem auto;
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
+  margin: 3rem auto;
 }
-
-.specialist-card {
+.specialist-cards .specialist-card {
   background-color: #6a8e61;
   color: white;
   border-radius: 0.625rem;
-  padding: 1.5rem;
-  text-align: center;
+  padding: 1.5625rem;
   flex: 1;
+  min-width: 0;
   max-width: calc(33.333% - 2rem);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+  position: relative;
 }
-
-.specialist-card img {
+.specialist-cards .specialist-card img {
   width: 100%;
   max-width: 150px;
+  height: auto;
   border-radius: 50%;
+  object-fit: cover;
   margin-bottom: 1rem;
 }
-
-.specialist-card h3 {
+.specialist-cards .specialist-card h3 {
   font-size: 1.5rem;
   margin-bottom: 0.625rem;
 }
-
-.specialist-card p {
+.specialist-cards .specialist-card .price-wrapper {
+  font-size: 1.625rem;
+  font-weight: bold;
+  margin: 0.625rem 0;
+}
+.specialist-cards .specialist-card .features {
+  list-style-type: none;
+  padding: 0;
+  margin: 0.625rem 0;
+  text-align: left;
+}
+.specialist-cards .specialist-card .features li {
+  margin-bottom: 0.3125rem;
+  padding-left: 1.5625rem;
+  position: relative;
+}
+.specialist-cards .specialist-card .features li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #ffdab0;
+}
+.specialist-cards .specialist-card .best-offer {
+  background-color: #fff2e3;
+  color: #4a6741;
+  padding: 0.3125rem 0.625rem;
+  border-radius: 0.9375rem;
   font-size: 0.875rem;
-  margin-bottom: 0.9375rem;
+  font-weight: bold;
+  position: absolute;
+  top: -0.625rem;
+  right: -0.625rem;
 }
 
-/* Sección Recetas */
 .recipe-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
   margin: 3rem auto;
 }
-
-.recipe-card {
+.recipe-cards .recipe-card {
   background-color: #6a8e61;
   color: white;
   border-radius: 0.625rem;
-  padding: 1.5rem;
+  padding: 1.25rem;
+  width: calc(33.333% - 2rem);
+  min-width: 250px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
-.recipe-card img {
-  width: 100%;
-  max-width: 150px;
-  border-radius: 50%;
-  margin: 0 auto 1rem;
+.recipe-cards .recipe-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.625rem;
+  color: #ffdab0;
+}
+.recipe-cards .recipe-card p {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin-bottom: 0.9375rem;
 }
 
-@media (max-width: 1024px) {
-  .recipe-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 768px) {
-  .recipe-cards {
-    grid-template-columns: 1fr;
-  }
-}
 .contact-container {
   display: flex;
   justify-content: space-between;
@@ -243,19 +256,18 @@ section .centered-text {
   gap: 2rem;
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
   margin: 3rem auto;
 }
-
-.contact-info,
-.contact-form {
+.contact-container .contact-info,
+.contact-container .contact-form {
   flex: 1 1 calc(50% - 1rem);
   min-width: 250px;
 }
-
-.contact-info input,
-.contact-info textarea,
-.contact-form input,
-.contact-form textarea {
+.contact-container .contact-info input,
+.contact-container .contact-info textarea,
+.contact-container .contact-form input,
+.contact-container .contact-form textarea {
   width: 100%;
   padding: 0.625rem;
   border: 1px solid #4a6741;
@@ -264,17 +276,15 @@ section .centered-text {
   font-size: 1rem;
   color: #333;
 }
-
-.contact-info input:focus,
-.contact-info textarea:focus,
-.contact-form input:focus,
-.contact-form textarea:focus {
+.contact-container .contact-info input:focus,
+.contact-container .contact-info textarea:focus,
+.contact-container .contact-form input:focus,
+.contact-container .contact-form textarea:focus {
   outline: none;
   border-color: #6a8e61;
 }
-
-.contact-info button,
-.contact-form button {
+.contact-container .contact-info button,
+.contact-container .contact-form button {
   background-color: #4a6741;
   color: white;
   border: none;
@@ -284,9 +294,8 @@ section .centered-text {
   border-radius: 0.3125rem;
   transition: background-color 0.3s;
 }
-
-.contact-info button:hover,
-.contact-form button:hover {
+.contact-container .contact-info button:hover,
+.contact-container .contact-form button:hover {
   background-color: #ffdab0;
 }
 
@@ -296,25 +305,21 @@ footer {
   padding: 1.25rem 0;
   text-align: center;
 }
-
 footer .social-icons {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0.625rem 0;
 }
-
 footer .social-icons a {
   color: white;
   margin: 0 0.3125rem;
   font-size: 1.25rem;
   transition: color 0.3s;
 }
-
 footer .social-icons a:hover {
   color: #ffdab0;
 }
-
 footer p {
   margin: 0.625rem 0;
 }
@@ -334,7 +339,6 @@ footer p {
   border-radius: 50%;
   font-size: 18px;
 }
-
 #scrollTopButton:hover {
   background-color: #ffdab0;
 }
@@ -457,7 +461,6 @@ footer p {
   position: relative;
   overflow: hidden;
 }
-
 .login-left .background-image {
   position: absolute;
   top: 50%;
@@ -467,28 +470,23 @@ footer p {
   height: auto;
   z-index: 0;
 }
-
 .login-left .login-left-content {
   position: relative;
   z-index: 1;
   text-align: center;
 }
-
 .login-left .login-title {
   font-size: 2.5rem;
   margin-bottom: 0.5rem;
 }
-
 .login-left .login-subtitle {
   font-size: 1.2rem;
 }
-
 .login-left .contact-info {
   position: relative;
   z-index: 1;
   margin-top: auto;
 }
-
 .login-left .contact-info p {
   margin: 0.5rem 0;
 }
@@ -506,27 +504,22 @@ footer p {
   max-width: 400px;
   margin: 0 auto;
 }
-
 .login-form .form-group {
   margin-bottom: 1.5rem;
 }
-
 .login-form .form-group label {
   display: block;
   margin-bottom: 0.5rem;
 }
-
 .login-form .form-group input {
   width: 100%;
   padding: 0.625rem;
   border: 1px solid #ccc;
   border-radius: 0.3125rem;
 }
-
 .login-form .relative {
   position: relative;
 }
-
 .login-form .password-toggle {
   position: absolute;
   right: 10px;
@@ -536,7 +529,6 @@ footer p {
   border: none;
   cursor: pointer;
 }
-
 .login-form .login-button {
   width: 100%;
 }
@@ -545,7 +537,6 @@ footer p {
   margin-top: 1rem;
   text-align: center;
 }
-
 .login-links a {
   display: block;
   margin: 0.5rem 0;

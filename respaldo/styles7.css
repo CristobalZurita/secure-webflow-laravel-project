@@ -1,4 +1,3 @@
-@charset "UTF-8";
 body {
   font-family: "Arial", sans-serif;
   margin: 0;
@@ -159,52 +158,14 @@ section .centered-text {
   object-fit: cover;
 }
 
-/* Sección Especialistas */
-.specialist-cards {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin: 3rem auto;
-  width: 90%;
-  max-width: 1200px;
-}
-
-.specialist-card {
-  background-color: #6a8e61;
-  color: white;
-  border-radius: 0.625rem;
-  padding: 1.5rem;
-  text-align: center;
-  flex: 1;
-  max-width: calc(33.333% - 2rem);
-}
-
-.specialist-card img {
-  width: 100%;
-  max-width: 150px;
-  border-radius: 50%;
-  margin-bottom: 1rem;
-}
-
-.specialist-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 0.625rem;
-}
-
-.specialist-card p {
-  font-size: 0.875rem;
-  margin-bottom: 0.9375rem;
-}
-
-/* Sección Recetas */
 .recipe-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
   margin: 3rem auto;
 }
 
@@ -212,30 +173,27 @@ section .centered-text {
   background-color: #6a8e61;
   color: white;
   border-radius: 0.625rem;
-  padding: 1.5rem;
+  padding: 1.25rem;
+  width: calc(33.333% - 2rem);
+  min-width: 250px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.recipe-card img {
-  width: 100%;
-  max-width: 150px;
-  border-radius: 50%;
-  margin: 0 auto 1rem;
+.recipe-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.625rem;
+  color: #ffdab0;
 }
 
-@media (max-width: 1024px) {
-  .recipe-cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.recipe-card p {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin-bottom: 0.9375rem;
 }
-@media (max-width: 768px) {
-  .recipe-cards {
-    grid-template-columns: 1fr;
-  }
-}
+
 .contact-container {
   display: flex;
   justify-content: space-between;
@@ -243,6 +201,7 @@ section .centered-text {
   gap: 2rem;
   width: 90%;
   max-width: 1200px;
+  margin: 0 auto;
   margin: 3rem auto;
 }
 
