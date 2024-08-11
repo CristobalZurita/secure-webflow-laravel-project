@@ -1,8 +1,58 @@
-// Fonts
-@import url('https://fonts.bunny.net/css?family=Nunito');
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
-// Variables
-@import 'variables';
+/* Estilos personalizados */
+body {
+    font-family: 'Arial', sans-serif;
+    @apply bg-yellow-50 text-gray-800;
+}
 
-// Bootstrap
-@import 'bootstrap/scss/bootstrap';
+header {
+    @apply bg-green-800 py-5;
+}
+
+.logo-container {
+    @apply text-center text-white;
+}
+
+.logo {
+    @apply w-24 h-auto;
+}
+
+nav ul {
+    @apply list-none p-0 mt-5 flex justify-center bg-green-700 rounded-full;
+}
+
+nav ul li {
+    @apply py-2;
+}
+
+nav ul li a {
+    @apply text-white no-underline px-5 text-base transition-all duration-300;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    @apply font-bold text-yellow-200;
+}
+
+.container {
+    @apply mt-12;
+}
+
+.card-header {
+    @apply font-bold;
+}
+
+.g-recaptcha {
+    @apply mt-5;
+}
+
+.btn-primary {
+    @apply bg-yellow-200 border-0 text-green-800;
+}
+
+.btn-primary:hover {
+    @apply bg-yellow-300;
+}

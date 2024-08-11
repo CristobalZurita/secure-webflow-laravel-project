@@ -42,7 +42,7 @@ header {
     z-index: 1000;
   }
 
-  .header-content {
+  .contenido-encabezado {
     @include flex-center;
     flex-direction: column;
     text-align: center;
@@ -83,7 +83,7 @@ nav {
         display: block;
 
         &:hover,
-        &.active {
+        &.activo {
           color: $accent-color;
         }
       }
@@ -129,26 +129,6 @@ section {
 
   &:hover {
     background-color: darken($accent-color, 10%);
-  }
-}
-
-// Sección de Inicio
-#home {
-  text-align: center;
-
-  .food-images {
-    @include flex-center;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1.2rem;
-
-    img {
-      width: 100%;
-      max-width: 150px;
-      height: auto;
-      border-radius: 0.625rem;
-      object-fit: cover;
-    }
   }
 }
 
@@ -231,14 +211,14 @@ section {
 }
 
 // Planes de Precios
-.pricing-container {
+.specialist-cards {
   @include flex-center;
   flex-wrap: nowrap;
   gap: 2rem;
   @include section-container;
   margin: 3rem auto;
 
-  .pricing-card {
+  .specialist-card {
     background-color: $secondary-color;
     color: white;
     border-radius: 0.625rem;
@@ -249,7 +229,7 @@ section {
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center;
     box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
     position: relative;
 
@@ -522,25 +502,6 @@ footer {
     text-align: center;
     margin-top: 1rem;
   }
-
-  .login-container {
-    flex-direction: column;
-  }
-
-  .login-left,
-  .login-right {
-    width: 100%;
-  }
-}
-
-@media (min-width: 769px) {
-  .menu-toggle {
-    display: none;
-  }
-
-  nav ul {
-    display: flex !important;
-  }
 }
 
 @media (min-width: 1440px) {
@@ -571,141 +532,159 @@ footer {
   .recipe-card {
     padding: 2rem;
   }
-
-  .login-left,
-  .login-right {
-    padding: 3rem;
-  }
-
-  .login-form {
-    max-width: 500px;
-  }
 }
-
 
 // Estilos específicos para la página de ingreso
 .login-container {
-    display: flex;
-    min-height: calc(100vh - 200px);
-    padding: 0;
+  display: flex;
+  min-height: calc(100vh - 200px);
+  padding: 0;
+}
+
+.login-left {
+  flex: 1;
+  background-color: $secondary-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  .background-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: auto;
+    opacity: 0.1;
+    z-index: 0;
   }
-  
-  .login-left {
-    flex: 1;
-    background-color: $secondary-color;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 2rem;
-    color: white;
+
+  .login-left-content {
     position: relative;
-    overflow: hidden;
-  
-    .background-image {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: auto;
-      opacity: 0.1;
-      z-index: 0;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .login-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .login-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .contact-info {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+
+    p {
+      margin: 0.5rem 0;
     }
-  
-    .login-left-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-    }
-  
-    .login-title {
-      font-size: 2.5rem;
+  }
+}
+
+.login-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  background-color: white;
+}
+
+.login-form {
+  max-width: 400px;
+  margin: 0 auto;
+
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+      display: block;
       margin-bottom: 0.5rem;
     }
-  
-    .login-subtitle {
-      font-size: 1.2rem;
-    }
-  
-    .contact-info {
-      position: relative;
-      z-index: 1;
-      margin-top: auto;
-  
-      p {
-        margin: 0.5rem 0;
-      }
+
+    input {
+      width: 100%;
+      padding: 0.625rem;
+      border: 1px solid #ccc;
+      border-radius: 0.3125rem;
     }
   }
-  
-  .login-right {
-    flex: 1;
-    display: flex;
+
+  .relative {
+    position: relative;
+  }
+
+  .password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .login-button {
+    width: 100%;
+  }
+}
+
+.login-links {
+  margin-top: 1rem;
+  text-align: center;
+
+  a {
+    display: block;
+    margin: 0.5rem 0;
+    color: $primary-color;
+    text-decoration: none;
+  }
+}
+
+// Media queries
+@media (max-width: 768px) {
+  .login-container {
     flex-direction: column;
-    justify-content: center;
-    padding: 2rem;
-    background-color: white;
   }
-  
-  .login-form {
-    max-width: 400px;
-    margin: 0 auto;
-  
-    .form-group {
-      margin-bottom: 1.5rem;
-  
-      label {
-        display: block;
-        margin-bottom: 0.5rem;
-      }
-  
-      input {
-        width: 100%;
-        padding: 0.625rem;
-        border: 1px solid #ccc;
-        border-radius: 0.3125rem;
-      }
-    }
-  
-    .relative {
-      position: relative;
-    }
-  
-    .password-toggle {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-  
-    .login-button {
-      width: 100%;
-    }
+
+  .login-left,
+  .login-right {
+    width: 100%;
   }
-  
-  .login-links {
-    margin-top: 1rem;
-    text-align: center;
-  
-    a {
-      display: block;
-      margin: 0.5rem 0;
-      color: $primary-color;
-      text-decoration: none;
-    }
+}
+
+#ubicacion {
+  padding: 3rem 1rem;
+}
+
+.ubicacion-container {
+  width: 90%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.mapa-wrapper {
+  margin-top: 2rem;
+}
+
+iframe.mapa {
+  width: 100%;
+  height: 650px;
+  border: none;
+  border-radius: 0.625rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  iframe.mapa {
+    height: 300px;
   }
-  
-  // Media queries
-  @media (max-width: 768px) {
-    .login-container {
-      flex-direction: column;
-    }
-  
-    .login-left,
-    .login-right {
-      width: 100%;
-    }
-  }
+}
