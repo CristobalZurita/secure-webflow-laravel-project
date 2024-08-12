@@ -208,3 +208,42 @@ document.addEventListener('DOMContentLoaded', () => {
         recuperarForm.addEventListener('submit', handleRecuperarSubmit);
     }
 });
+
+// Calendar initialization
+const calendarEl = document.getElementById('calendar');
+if (calendarEl) {
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        locale: 'es',
+        buttonText: {
+            today: 'Hoy',
+            month: 'Mes',
+            week: 'Semana',
+            day: 'Día'
+        },
+        selectable: true,
+        select: function(info) {
+            const title = prompt('Ingrese un título para su cita:');
+            if (title) {
+                calendar.addEvent({
+                    title: title,
+                    start: info.startStr,
+                    end: info.endStr,
+                    allDay: info.allDay
+                });
+            }
+            calendar.unselect();
+        },
+        eventClick: function(info) {
+            if (confirm('¿Está seguro de que desea eliminar esta cita?')) {
+                info.event.remove();
+            }
+        }
+    });
+    calendar.render();
+}

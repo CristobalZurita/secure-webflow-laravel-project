@@ -3,32 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda tu Hora</title>
+    <title>Agenda tu Hora - Nutribite</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://use.typekit.net/apl6lau.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
 </head>
-<body> 
-     <header class="sticky">
+<body>
+    <header class="sticky">
         <h1 class="header-content">Agenda tu Hora</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="ingreso.html" class="active">Agenda tu Hora</a></li>
+                <li><a href="agendar.html" class="active">Agenda tu Hora</a></li>
             </ul>
         </nav>
-    </div>
     </header>
-    <section id="ingreso">
+    <section id="agendar">
         <div class="section-content">
-            <h2>Página de Agendar Hora</h2>
-            <p>Esta es una página en blanco para Agendar Hora.</p>
+            <h2>Agenda tu Hora</h2>
+            <div id="calendar"></div>
         </div>
     </section>
-
-
-
     <footer>
         <p>&copy; 2024 Nutribite. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                locale: 'es',
+                buttonText: {
+                    today: 'Hoy',
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día'
+                },
+                selectable: true,
+                select: function(info) {
+                    var title = prompt('Ingrese un título para su cita:');
+                    if (title) {
+                        calendar.addEvent({
+                            title: title,
+                            start: info.startStr,
+                            end: info.endStr,
+                            allDay: info.allDay
+                        });
+                    }
+                    calendar.unselect();
+                },
+                eventClick: function(info) {
+                    if (confirm('¿Está seguro de que desea eliminar esta cita?')) {
+                        info.event.remove();
+                    }
+                }
+            });
+            calendar.render();
+        });
+    </script>
 </body>
 </html>
