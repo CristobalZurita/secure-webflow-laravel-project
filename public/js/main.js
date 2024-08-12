@@ -1,38 +1,95 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Sanitización básica de entradas de texto
-    function sanitizeInput(input) {
-        return input.replace(/[^\w\s@.,:;!?()-]/g, '').trim();
+    // Función de Sanitización Global
+    function sanitizeInput(input, type) {
+        switch(type) {
+            case 'nombre':
+                return input.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '').trim();
+            case 'telefono':
+                return input.replace(/[^\d+]/g, '').trim();
+            case 'mensaje':
+                return input.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\.,¿?]/g, '').trim();
+            default:
+                return input.trim();
+        }
     }
 
-    // Validación de campos
-    function validateField(value, regex, errorMsg) {
-        if (!regex.test(value)) {
+    // Función de Validación Global
+    function validateField(input, regex, errorMsg) {
+        const sanitizedValue = sanitizeInput(input.value, input.name);
+        
+        // No reasignar input.value a menos que el valor sea válido
+        if (!regex.test(sanitizedValue)) {
             alert(errorMsg);
+            input.focus();
             return false;
         }
+
+        // Solo reasigna el valor si la validación es exitosa
+        input.value = sanitizedValue;
         return true;
     }
 
-    // Validación y envío del formulario de contacto
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+    // Aplicar Sanitización y Validación a Todos los Formularios en la Página
+    document.querySelectorAll('form').forEach((form) => {
+        form.addEventListener('submit', (e) => {
+            let isValid = true;  // Inicializa isValid como true
 
-            const nombre = sanitizeInput(contactForm.querySelector('input[name="nombre"]').value);
-            const correo = sanitizeInput(contactForm.querySelector('input[name="correo"]').value);
-            const mensaje = sanitizeInput(contactForm.querySelector('textarea[name="mensaje"]').value);
+            form.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach((input) => {
+                if (input.name === 'nombre') {
+                    if (!validateField(input, /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, 'El nombre solo puede contener letras y espacios.')) {
+                        isValid = false;
+                    }
+                } else if (input.name === 'telefono') {
+                    if (!validateField(input, /^\+56\d{9}$/, 'El teléfono debe comenzar con +56 y seguir con 9 dígitos.')) {
+                        isValid = false;
+                    }
+                } else if (input.name === 'correo') {
+                    if (!validateField(input, /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Por favor, ingrese una dirección de correo electrónico válida.')) {
+                        isValid = false;
+                    }
+                } else if (input.name === 'mensaje') {
+                    if (!validateField(input, /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\.,¿?]+$/, 'El mensaje solo puede contener letras, números, signos de pregunta, comas, puntos y acentos en las vocales.')) {
+                        isValid = false;
+                    }
+                }
+            });
 
-            if (!validateField(nombre, /^[a-zA-Z\s'-]+$/, 'El nombre solo puede contener letras, espacios, apóstrofos y guiones.') ||
-                !validateField(correo, /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Por favor, ingrese una dirección de correo electrónico válida.') ||
-                !validateField(mensaje, /^[a-zA-Z0-9\s.,:;!?()-]*$/, 'El mensaje contiene caracteres no permitidos.')) {
-                return;
+            // Validación específica para la página de Agenda tu Hora
+            if (form.id === 'reserva-form') {
+                const tipoConsulta = form.querySelector('select[name="tipoConsulta"]');
+                const especialidad = form.querySelector('select[name="especialidad"]');
+                const centroAtencion = form.querySelector('select[name="centroAtencion"]');
+                const selectedTimeSlot = form.querySelector('.time-slot.selected');
+
+                if (tipoConsulta && tipoConsulta.value === "") {
+                    alert('Por favor, seleccione un tipo de consulta.');
+                    isValid = false;
+                }
+                if (especialidad && especialidad.value === "") {
+                    alert('Por favor, seleccione una especialidad.');
+                    isValid = false;
+                }
+                if (centroAtencion && centroAtencion.value === "") {
+                    alert('Por favor, seleccione un centro de atención.');
+                    isValid = false;
+                }
+                if (!selectedTimeSlot) {
+                    alert('Por favor, seleccione una fecha y hora para su cita.');
+                    isValid = false;
+                }
             }
 
-            alert('Formulario enviado correctamente. Gracias por contactarnos!');
-            contactForm.reset();
+            if (!isValid) {
+                e.preventDefault();  // Evita el envío del formulario si hay errores
+            } else {
+                alert('Formulario enviado correctamente. Gracias por contactarnos!');
+                form.reset();  // Resetea el formulario si todo está bien
+                if (form.id === 'reserva-form') {
+                    document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+                }
+            }
         });
-    }
+    });
 
     // Validación y envío del formulario de registro
     const registerForm = document.getElementById('register-form');
@@ -49,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const passwordConfirmation = document.getElementById('password_confirmation').value;
             const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{10,}$/;
 
-            if (!validateField(password, passwordRegex, "La contraseña debe tener al menos 10 caracteres, una letra mayúscula, una minúscula, un número y un símbolo.") ||
+            if (!validateField({value: password}, passwordRegex, "La contraseña debe tener al menos 10 caracteres, una letra mayúscula, una minúscula, un número y un símbolo.") ||
                 password !== passwordConfirmation) {
                 alert("Las contraseñas no coinciden");
                 return;
@@ -112,5 +169,53 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
         });
+    }
+
+    // Funcionalidad del calendario para la página de Agenda tu Hora
+    const weekSchedule = document.querySelector('.week-schedule');
+    const prevWeekBtn = document.getElementById('prevWeek');
+    const nextWeekBtn = document.getElementById('nextWeek');
+    const currentWeekSpan = document.getElementById('currentWeek');
+
+    if (weekSchedule && prevWeekBtn && nextWeekBtn && currentWeekSpan) {
+        let currentDate = new Date();
+        currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 1);
+
+        function updateWeekDisplay() {
+            const weekStart = new Date(currentDate);
+            const weekEnd = new Date(currentDate);
+            weekEnd.setDate(weekEnd.getDate() + 4);
+            currentWeekSpan.textContent = `${weekStart.toLocaleDateString()} - ${weekEnd.toLocaleDateString()}`;
+        }
+
+        function generateTimeSlots() {
+            const timeSlots = document.querySelectorAll('.time-slots');
+            timeSlots.forEach(daySlots => {
+                daySlots.innerHTML = '';
+                for (let hour = 9; hour < 18; hour++) {
+                    const timeSlot = document.createElement('div');
+                    timeSlot.className = 'time-slot';
+                    timeSlot.textContent = `${hour}:00`;
+                    timeSlot.addEventListener('click', function() {
+                        document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+                        this.classList.add('selected');
+                    });
+                    daySlots.appendChild(timeSlot);
+                }
+            });
+        }
+
+        prevWeekBtn.addEventListener('click', function() {
+            currentDate.setDate(currentDate.getDate() - 7);
+            updateWeekDisplay();
+        });
+
+        nextWeekBtn.addEventListener('click', function() {
+            currentDate.setDate(currentDate.getDate() + 7);
+            updateWeekDisplay();
+        });
+
+        updateWeekDisplay();
+        generateTimeSlots();
     }
 });
