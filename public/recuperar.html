@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recuperar Contraseña - Nutribite</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="https://use.typekit.net/apl6lau.css">
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+<header class="sticky">
+<div class="header-content">
+<h1>Recuperar Contraseña</h1>
+<nav>
+<ul>
+<li><a href="index.html">Home</a></li>
+<li><a href="ingreso1.html">Iniciar Sesión</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main class="login-container section-content">
+<section class="login-left">
+<div class="login-left-content">
+<h2 class="login-title">Nutribite</h2>
+<p class="login-subtitle">Salud y cuidado en tu hogar</p>
+<img src="/public/images/brocoli.png" alt="Brócoli" class="background-image">
+</div>
+<div class="contact-info">
+<p>contacto@nutribite.com</p>
+<p>soporte@nutribite.com</p>
+<p>Mesa de ayuda: (+56) 9 9999 9999</p>
+<p>Avenida Pedro Montt 2930, piso 2 oficina 201, Valparaíso.</p>
+</div>
+</section>
+<section class="login-right">
+<form id="recuperar-form" class="login-form" onsubmit="return handleRecuperarSubmit(event)">
+<div class="form-group">
+<label for="email">Correo electrónico</label>
+<input type="email" id="email" name="email" placeholder="Ingrese su correo electrónico" required>
+</div>
+<div class="g-recaptcha" data-sitekey="6Le9sR0qAAAAAFH15LWT_CiSU-8ssw6WdizUjz0i"></div>
+<button type="submit" class="login-button cta-button">Recuperar Contraseña</button>
+</form>
+<div class="login-links">
+<a href="ingreso1.html">Volver a Iniciar Sesión</a>
+</div>
+</section>
+</main>
+<footer>
+<p>&copy; 2024 Nutribite. Todos los derechos reservados.</p>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
