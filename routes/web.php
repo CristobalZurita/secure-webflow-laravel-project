@@ -9,7 +9,6 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SpecialistsController;
 use App\Http\Controllers\BookingController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AppointmentController;
 
@@ -23,36 +22,37 @@ Route::get('/promociones', [PromotionsController::class, 'index'])->name('promot
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/contacto', [ContactController::class, 'index'])->name('contact');
 Route::get('/agenda-tu-hora', [BookingController::class, 'index'])->name('booking');
+
+// Rutas de autenticación
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:10,1');
 Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
 Route::post('/forgot-password', [AuthController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::post('login', 'AuthController@login');
-
-
-// Rutas de autenticación
-Auth::routes();
-
 
 // Rutas para la autenticación de doble factor (2FA)
-Route::get('2fa', [LoginController::class, 'showTwoFactorForm'])->name('2fa.form');
-Route::post('2fa', [LoginController::class, 'verifyTwoFactor'])->name('2fa.verify');
-
-// Rutas protegidas
-Route::middleware(['auth', 'verified'])->group(function () {
-    // Otras rutas protegidas
+Route::middleware(['auth'])->group(function () {
+    Route::get('/verify', [AuthController::class, 'showVerifyForm'])->name('verify.index');
+    Route::post('/verify', [AuthController::class, 'verifyTwoFactor'])->name('verify.store');
 });
 
-// Middleware de tasa de limitación para login
-Route::post('login', [LoginController::class, 'login'])->middleware('throttle:10,1');
+// Rutas protegidas
+Route::middleware(['auth', 'verified', '2fa'])->group(function () {
+    // Rutas que requieren autenticación, verificación de correo y 2FA
+    Route::get('/agendar-cita', [AppointmentController::class, 'showAppointmentForm'])->name('appointment.form');
+    Route::post('/agendar-cita', [AppointmentController::class, 'scheduleAppointment'])->name('appointment.schedule');
+    Route::get('/available-slots', [AppointmentController::class, 'getAvailableSlots'])->name('appointment.slots');
+    
+    // Aquí puedes añadir más rutas protegidas según sea necesario
+});
 
-// Rutas para agendar citas
-Route::get('/agendar-cita', [AppointmentController::class, 'showAppointmentForm'])->name('appointment.form');
-Route::post('/agendar-cita', [AppointmentController::class, 'scheduleAppointment'])->name('appointment.schedule');
-Route::get('/available-slots', [AppointmentController::class, 'getAvailableSlots'])->name('appointment.slots');
-Auth::routes();
+// Rutas de restablecimiento de contraseña
+Route::get('/reset-password', [AuthController::class, 'showResetForm'])->name('password.reset');
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Ruta de verificación de email
+Route::get('/email/verify', [AuthController::class, 'showVerificationNotice'])->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])->name('verification.verify');
+Route::post('/email/resend', [AuthController::class, 'resendVerificationEmail'])->name('verification.resend');
