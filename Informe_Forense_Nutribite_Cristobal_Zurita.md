@@ -1,8 +1,14 @@
+<div style="text-align: center;">
+    <img src="/public/images/images.png" alt="Logo 1" style="width:100px; height:auto; vertical-align: middle;">
+</div>
+
 # Informe Forense: Análisis de Ataque Cibernético a Infraestructura Crítica de Nutribite
 
-## Portada
 
-[Insertar logos corporativos aquí]
+
+<div style="text-align: center;">
+    <img src="/public/images/NutribiteLogo.png" alt="Logo 1" style="width:300px; height:auto; vertical-align: middle;">
+</div>
 
 ## Resumen Ejecutivo
 

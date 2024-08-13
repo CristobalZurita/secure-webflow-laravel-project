@@ -1,4 +1,13 @@
+<div style="text-align: center;">
+    <img src="/public/images/images.png" alt="Logo 1" style="width:100px; height:auto; vertical-align: middle;">
+</div>
+
 # Manual de Instalación y Configuración del Sistema Web Nutribite
+
+<div style="text-align: center;">
+    <img src="/public/images/NutribiteLogo.png" alt="Logo 1" style="width:300px; height:auto; vertical-align: middle;">
+</div>
+
 
 ## Índice
 1. **Introducción**
@@ -128,6 +137,116 @@ Una vez que tu entorno de desarrollo esté configurado, el siguiente paso es obt
   ```
 
 ## 4. Configuración del Servidor Web
+
+
+La configuración del servidor web es una de las fases más críticas en el despliegue de un proyecto web. Asegurar que el servidor esté correctamente configurado es fundamental para garantizar que las aplicaciones web funcionen de manera eficiente, segura y escalable. El proceso de configuración del servidor incluye una serie de pasos que van desde la instalación de software esencial hasta la implementación de medidas de seguridad y la ejecución de pruebas de rendimiento.
+
+
+El diagrama de flujo "## 4. Configuración del Servidor Web" se presenta como una guía visual clara y estructurada que detalla cada paso necesario para la correcta configuración del servidor web. Este enfoque permite a los administradores de sistemas, desarrolladores y cualquier persona involucrada en el proyecto seguir un procedimiento secuencial y lógico, minimizando la posibilidad de errores y garantizando que todas las tareas esenciales se realicen en el orden correcto.
+
+##### 1. **Inicio del Proceso**
+   - El proceso comienza con la descarga e instalación de XAMPP o LAMP, que son paquetes que contienen Apache, MySQL, y PHP, las herramientas básicas para correr un servidor web local. Este paso es crucial, ya que establece el entorno donde se desarrollará y probará la aplicación.
+
+##### 2. **Verificación de Instalaciones**
+   - Tras la instalación, se verifica que Apache, MySQL y PHP funcionen correctamente. Este paso asegura que los componentes esenciales del servidor estén operativos antes de continuar con configuraciones más avanzadas.
+
+##### 3. **Configuración y Migración**
+   - A continuación, se clona el repositorio del proyecto y se configuran los archivos `.env`, que contienen variables cruciales para el entorno de desarrollo. La correcta configuración de estos archivos es esencial para garantizar que el proyecto se comunique adecuadamente con la base de datos y otros servicios.
+
+##### 4. **Compilación y Seguridad**
+   - Una vez configurado el entorno, se procede a la compilación de archivos CSS/JS utilizando Laravel Mix, lo cual es necesario para optimizar los recursos frontend. Posteriormente, se configuran las medidas de seguridad del servidor, incluyendo firewall y SSL, para proteger la aplicación contra posibles amenazas.
+
+##### 5. **Pruebas y Monitorización**
+   - El proceso culmina con la realización de pruebas de seguridad para identificar y corregir posibles vulnerabilidades, y finalmente, la implementación de un sistema de backup y monitorización, lo que asegura la disponibilidad y seguridad continua del servidor.
+
+
+```mermaid
+
+
+graph TD
+    A[Inicio] --> B[Descargar e Instalar XAMPP/LAMP]
+    B --> C{¿Instalación Completa?}
+
+    C -->|Sí| D[Verificar Instalación de Apache, MySQL y PHP]
+    D --> E{¿Apache, MySQL y PHP están funcionando?}
+    E -->|Sí| F[Clonar Repositorio del Proyecto]
+    F --> G[Configurar Archivos .env]
+    G --> H{¿.env Configurado Correctamente?}
+    
+    H -->|Sí| I[Ejecución de Migraciones y Seeders]
+    I --> J{¿Migraciones y Seeders Correctos?}
+    J -->|Sí| K[Compilar CSS/JS con Laravel Mix]
+    K --> L{¿Compilación Exitosa?}
+    L -->|Sí| M[Configurar Seguridad del Servidor]
+    M --> N{¿Seguridad Configurada?}
+    N -->|Sí| O[Realizar Pruebas de Seguridad]
+    O --> P{¿Pruebas Exitosas?}
+    P -->|Sí| Q[Backup y Monitorización del Sistema]
+    Q --> R[Fin]
+
+    C -->|No| S[Revisar Problemas de Instalación]
+    S --> T[Reintentar Instalación]
+    T --> C
+
+    E -->|No| U[Revisar Configuración de Apache, MySQL y PHP]
+    U --> V[Reconfigurar Servicios]
+    V --> D
+
+    H -->|No| W[Revisar Configuración de .env]
+    W --> X[Reconfigurar .env]
+    X --> G
+
+    J -->|No| Y[Revisar Migraciones y Seeders]
+    Y --> Z[Corregir Migraciones/Seeders]
+    Z --> I
+
+    L -->|No| AA[Revisar Errores de Compilación]
+    AA --> AB[Corregir Laravel Mix]
+    AB --> K
+
+    N -->|No| AC[Revisar Seguridad]
+    AC --> AD[Corregir Configuración]
+    AD --> M
+
+    P -->|No| AE[Analizar Resultados de Seguridad]
+    AE --> AF[Corregir Vulnerabilidades]
+    AF --> O
+
+    style A fill:#D3E5FF,stroke:#005BBB,stroke-width:2px;
+    style B fill:#FFEDB3,stroke:#D2691E,stroke-width:2px;
+    style C fill:#F9E79F,stroke:#F39C12,stroke-width:2px;
+    style D fill:#B3FFD9,stroke:#20C997,stroke-width:2px;
+    style E fill:#FAD7A0,stroke:#E67E22,stroke-width:2px;
+    style F fill:#D6EAF8,stroke:#2874A6,stroke-width:2px;
+    style G fill:#F2F3F4,stroke:#566573,stroke-width:2px;
+    style H fill:#FADBD8,stroke:#CD6155,stroke-width:2px;
+    style I fill:#D1F2EB,stroke:#1ABC9C,stroke-width:2px;
+    style J fill:#F9E79F,stroke:#F39C12,stroke-width:2px;
+    style K fill:#F6DDCC,stroke:#D35400,stroke-width:2px;
+    style L fill:#F2D7D5,stroke:#CB4335,stroke-width:2px;
+    style M fill:#D5DBDB,stroke:#566573,stroke-width:2px;
+    style N fill:#EBDEF0,stroke:#8E44AD,stroke-width:2px;
+    style O fill:#D7BDE2,stroke:#7D3C98,stroke-width:2px;
+    style P fill:#E8DAEF,stroke:#8E44AD,stroke-width:2px;
+    style Q fill:#D1F2EB,stroke:#1ABC9C,stroke-width:2px;
+    style R fill:#D3E5FF,stroke:#005BBB,stroke-width:2px;
+
+    style S fill:#FFEDB3,stroke:#D2691E,stroke-width:2px;
+    style T fill:#F9E79F,stroke:#F39C12,stroke-width:2px;
+    style U fill:#B3FFD9,stroke:#20C997,stroke-width:2px;
+    style V fill:#FAD7A0,stroke:#E67E22,stroke-width:2px;
+    style W fill:#D6EAF8,stroke:#2874A6,stroke-width:2px;
+    style X fill:#F2F3F4,stroke:#566573,stroke-width:2px;
+    style Y fill:#FADBD8,stroke:#CD6155,stroke-width:2px;
+    style Z fill:#D1F2EB,stroke:#1ABC9C,stroke-width:2px;
+    style AA fill:#F9E79F,stroke:#F39C12,stroke-width:2px;
+    style AB fill:#F6DDCC,stroke:#D35400,stroke-width:2px;
+    style AC fill:#D5DBDB,stroke:#566573,stroke-width:2px;
+    style AD fill:#EBDEF0,stroke:#8E44AD,stroke-width:2px;
+    style AE fill:#D7BDE2,stroke:#7D3C98,stroke-width:2px;
+    style AF fill:#E8DAEF,stroke:#8E44AD,stroke-width:2px;
+```
+
 
 ### Configuración de XAMPP/LAMP
 
@@ -394,3 +513,5 @@ Para obtener más información, consulta la documentación oficial de las siguie
 - [Node.js](https://nodejs.org/en/docs/)
 - [Apache](https://httpd.apache.org/docs/)
 - [MySQL](https://dev.mysql.com/doc/)
+
+

@@ -1,4 +1,14 @@
+
+
+<div style="text-align: center;">
+    <img src="/public/images/images.png" alt="Logo 1" style="width:100px; height:auto; vertical-align: middle;">
+</div>
+
 # Manual de Usuario - Plataforma Nutribite
+
+<div style="text-align: center;">
+    <img src="/public/images/NutribiteLogo.png" alt="Logo 1" style="width:300px; height:auto; vertical-align: middle;">
+</div>
 
 ## Índice
 

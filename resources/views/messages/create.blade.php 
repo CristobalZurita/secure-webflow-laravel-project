@@ -1,0 +1,7 @@
+
+
+<form method="POST" action="{{ route('messages.store') }}">
+    @csrf
+    <textarea name="content" required></textarea>
+    <button type="submit">Enviar Mensaje</button>
+</form>
