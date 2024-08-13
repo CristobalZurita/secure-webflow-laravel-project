@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC - Nutribite</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.typekit.net/apl6lau.css">
+    <style>
+        body {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        .header-content h1 {
+            margin-bottom: 20px;
+        }
+
+        .header-content nav ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .header-content nav ul li {
+            margin: 0 15px;
+        }
+
+        .imc-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .imc-content {
+            background-color: #6a8e61;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: white;
+        }
+
+        .imc-content h2 {
+            color: #f9e9d9;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .imc-content img {
+            width: 300px;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .imc-calculator {
+            background-color: #f9e9d9;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            color: #6a8e61;
+        }
+
+        .imc-calculator h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .imc-calculator form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .imc-calculator input, .imc-calculator button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 200px;
+        }
+
+        .imc-calculator button {
+            background-color: #6a8e61;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .plans {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .plans h3 {
+            color: #f9e9d9;
+        }
+
+        .plan-details {
+            background-color: #f9e9d9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            color: #6a8e61;
+        }
+
+        .plan-details ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .plan-details li {
+            margin-bottom: 10px;
+        }
+
+        .imc-explanation {
+            margin-bottom: 30px;
+        }
+
+        .imc-explanation p {
+            margin-bottom: 15px;
+        }
+
+        .imc-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .imc-table th, .imc-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .imc-table th {
+            background-color: #6a8e61;
+            color: white;
+            font-weight: bold;
+        }
+
+        .imc-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .imc-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .imc-result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9e9d9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .imc-result h4 {
+            color: #6a8e61;
+            margin-bottom: 10px;
+        }
+
+        .imc-result p {
+            margin-bottom: 10px;
+        }
+
+        .imc-advice {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-left: 5px solid #6a8e61;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header class="sticky">
+        <div class="header-content">
+            <h1>Nutribite</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recipes.html">Recetas</a></li>
+                    <li><a href="ingreso1.html">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="imc-container">
+        <section class="imc-content">
+            <h2>Descubre tu Índice de Masa Corporal (IMC)</h2>
+            
+            <div class="imc-explanation">
+                <p>Bienvenido a nuestra calculadora de IMC. Aquí en Nutribite, nos preocupamos por tu bienestar y queremos ayudarte a entender mejor tu salud. El Índice de Masa Corporal es una herramienta valiosa que te permite tener una idea inicial sobre tu composición corporal.</p>
+                
+                <p>¿Qué es exactamente el IMC? Es una medida que relaciona tu peso con tu altura, proporcionando una estimación de la grasa corporal. Aunque no es perfecta, es un buen punto de partida para evaluar tu salud general.</p>
+                
+                <img src="images/imc-meter.png" alt="Medidor de IMC">
+
+                <p>Calcular tu IMC es sencillo. Solo necesitas tu peso en kilogramos y tu altura en metros. Nosotros nos encargamos de hacer los cálculos por ti. Una vez que tengas tu número, te ayudaremos a interpretarlo.</p>
+
+                <p>Recuerda, el IMC es solo una guía. Cada cuerpo es único y hay muchos factores que influyen en tu salud general. Si tienes preocupaciones específicas, siempre es mejor consultar con un profesional de la salud.</p>
+
+                <p>En Nutribite, creemos en un enfoque holístico de la salud. Tu IMC es solo una pieza del rompecabezas. Te invitamos a usar esta herramienta como un primer paso en tu viaje hacia una vida más saludable y equilibrada.</p>
+            </div>
+
+            <div class="imc-calculator">
+                <h3>Calcula tu IMC ahora</h3>
+                <form id="imc-form">
+                    <input type="number" id="weight" placeholder="Tu peso (kg)" required>
+                    <input type="number" id="height" placeholder="Tu altura (cm)" required>
+                    <button type="submit">Calcular mi IMC</button>
+                </form>
+                <div id="result"></div>
+                <table class="imc-table">
+                    <thead>
+                        <tr>
+                            <th>IMC</th>
+                            <th>Nivel de peso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Por debajo de 18.5</td>
+                            <td>Bajo peso</td>
+                        </tr>
+                        <tr>
+                            <td>18.5 - 24.9</td>
+                            <td>Normal</td>
+                        </tr>
+                        <tr>
+                            <td>25.0 - 29.9</td>
+                            <td>Sobrepeso</td>
+                        </tr>
+                        <tr>
+                            <td>30.0 o más</td>
+                            <td>Obesidad</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        
+            <div class="plans">
+                <h3>Descubre nuestro Plan IMC</h3>
+                <div class="plan-details">
+                    <h4>IMC GRATIS</h4>
+                    <ul>
+                        <li>✓ Plan personalizado para ti</li>
+                        <li>✓ Flexibilidad: online y presencial</li>
+                        <li>✓ Acompañamiento de un profesional</li>
+                        <li>✓ Acceso a gimnasios asociados</li>
+                    </ul>
+                    <p>¡Dar el primer paso hacia una vida más saludable nunca ha sido tan fácil!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Nutribite. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('imc-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var weight = document.getElementById('weight').value;
+            var height = document.getElementById('height').value / 100; // Convert cm to m
+            var imc = weight / (height * height);
+            var resultDiv = document.getElementById('result');
+            var category, advice;
+
+            if (imc < 18.5) {
+                category = "Bajo peso";
+                advice = "Es importante asegurarse de que estás recibiendo todos los nutrientes necesarios. Considera aumentar tu ingesta calórica con alimentos saludables y ricos en nutrientes. Te recomendamos consultar a un nutricionista para desarrollar un plan de alimentación personalizado que te ayude a alcanzar un peso saludable.";
+            } else if (imc < 25) {
+                category = "Peso normal";
+                advice = "¡Excelente! Estás en un rango de peso saludable. Mantén tus hábitos actuales de alimentación y actividad física. Recuerda la importancia de una dieta equilibrada y ejercicio regular para mantener tu salud a largo plazo.";
+            } else if (imc < 30) {
+                category = "Sobrepeso";
+                advice = "Pequeños cambios en tu dieta y actividad física pueden hacer una gran diferencia. Considera aumentar tu actividad física diaria y reducir el consumo de alimentos procesados y azúcares añadidos. Nuestro equipo de nutricionistas puede ayudarte a crear un plan de alimentación y ejercicio personalizado para alcanzar un peso más saludable.";
+            } else {
+                category = "Obesidad";
+                advice = "Tu salud es importante y hay muchas opciones para mejorar tu bienestar. Te recomendamos consultar con un profesional de la salud para desarrollar un plan integral que incluya cambios en la dieta, aumento de la actividad física y posiblemente otros tratamientos. Recuerda, pequeños pasos consistentes pueden llevar a grandes cambios en tu salud.";
+            }
+
+            resultDiv.innerHTML = `
+                <div class="imc-result">
+                    <h4>Tu IMC es: ${imc.toFixed(2)}</h4>
+                    <p>Categoría: ${category}</p>
+                    <div class="imc-advice">
+                        <p><strong>Recomendación:</strong></p>
+                        <p>${advice}</p>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>

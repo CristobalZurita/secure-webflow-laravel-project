@@ -178,6 +178,7 @@ section .centered-text {
   text-align: center;
   flex: 1;
   max-width: calc(33.333% - 2rem);
+  position: relative; /* Añadido para posicionamiento absoluto de la "Mejor Oferta" */
 }
 
 .specialist-card img {
@@ -195,6 +196,19 @@ section .centered-text {
 .specialist-card p {
   font-size: 0.875rem;
   margin-bottom: 0.9375rem;
+}
+
+/* Estilo para la etiqueta "Mejor Oferta" */
+.best-offer {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  background-color: #ffdab0;
+  color: #4a6741;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 0.875rem;
 }
 
 /* Sección Recetas */

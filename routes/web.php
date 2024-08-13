@@ -31,6 +31,8 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/forgot-password', [AuthController::class, 'showForgotPasswordForm'])->name('password.request');
 Route::post('/forgot-password', [AuthController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::post('/messages', [MessageController::class, 'store']);
+Route::post('/appointments', [AppointmentController::class, 'store']);
 
 // Rutas para la autenticación de doble factor (2FA)
 Route::middleware(['auth'])->group(function () {

@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 body {
   font-family: "Arial", sans-serif;
   margin: 0;
@@ -179,8 +178,6 @@ section .centered-text {
   text-align: center;
   flex: 1;
   max-width: calc(33.333% - 2rem);
-  position: relative; /* Añadido para posicionamiento absoluto de la "Mejor Oferta" */
-
 }
 
 .specialist-card img {
@@ -198,19 +195,6 @@ section .centered-text {
 .specialist-card p {
   font-size: 0.875rem;
   margin-bottom: 0.9375rem;
-}
-
-/* Estilo para la etiqueta "Mejor Oferta" */
-.best-offer {
-  position: absolute;
-  top: -1rem;
-  right: -1rem;
-  background-color: #ffdab0;
-  color: #4a6741;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
-  font-weight: bold;
-  font-size: 0.875rem;
 }
 
 /* Sección Recetas */
@@ -245,168 +229,131 @@ section .centered-text {
   .recipe-cards {
     grid-template-columns: repeat(2, 1fr);
   }
-
   nav ul {
     flex-wrap: wrap;
     justify-content: center;
   }
-
   nav ul li {
     margin: 0.25rem;
   }
-
   nav ul li a {
     font-size: 1rem;
     padding: 0.4rem 0.6rem;
   }
-
   .specialist-cards {
     flex-wrap: wrap;
   }
-
   .specialist-card {
     flex-basis: calc(50% - 1rem);
     max-width: calc(50% - 1rem);
   }
-
-
-  //CONTENEDOR LOGIN
-
   .login-container {
     flex-direction: column;
   }
-
   .login-left,
   .login-right {
     width: 100%;
     padding: 1rem;
   }
-
   .login-form {
     width: 90%;
     margin: 0 auto;
   }
-
   iframe.mapa {
     height: 300px;
   }
 }
-
 @media (max-width: 768px) {
   .recipe-cards {
     grid-template-columns: 1fr;
   }
-
   header h1 {
     font-size: 1.5rem;
   }
-
   .menu-toggle {
     display: block;
   }
-
   nav ul {
     display: none;
     flex-direction: column;
     width: 100%;
   }
-
   nav ul.active {
     display: flex;
   }
-
   nav ul li {
     width: 100%;
     text-align: center;
     margin: 0.5rem 0;
   }
-
   nav ul li a {
     padding: 0.75rem;
   }
-
   .specialist-cards,
   .recipe-cards {
     flex-direction: column;
   }
-
   .specialist-card,
   .recipe-card {
     width: 100%;
     max-width: none;
   }
-
   .mision-vision-content {
     flex-direction: column;
   }
-
   .mision-vision-text,
   .mision-vision-image {
     flex: 1 1 100%;
   }
-
   .mision-vision-image {
     text-align: center;
     margin-top: 1rem;
   }
-
   .login-container {
     flex-direction: column;
   }
-
   .login-left,
   .login-right {
     width: 100%;
     padding: 1rem;
   }
-
   .login-form {
     width: 100%;
     padding: 0 1rem;
   }
-
   .background-image {
     display: none;
   }
-
   .week-schedule {
     flex-direction: column;
   }
-
   .day-column {
     margin: 5px 0;
   }
 }
-
 @media (min-width: 1440px) {
   body {
     font-size: 18px;
   }
-
   header h1 {
     font-size: 2.5rem;
   }
-
   nav ul li a {
     font-size: 1.2rem;
     padding: 0.75rem 1.5rem;
   }
-
   .section-content {
     max-width: 1400px;
     margin: 0 auto;
   }
-
   h2 {
     font-size: 2.5rem;
   }
-
   .specialist-card,
   .recipe-card {
     padding: 2rem;
   }
 }
-
 .contact-container {
   display: flex;
   justify-content: space-between;
@@ -638,3 +585,5 @@ iframe.mapa {
   width: 100%;
   margin-top: 1rem;
 }
+
+/*# sourceMappingURL=styles.css.map */

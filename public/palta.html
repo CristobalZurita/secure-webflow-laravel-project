@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wrap de Pavo y Palta - Nutribite</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://use.typekit.net/apl6lau.css">
+    <style>
+        body {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .header-content {
+            text-align: center;
+        }
+
+        .header-content h1 {
+            margin-bottom: 20px;
+        }
+
+        .header-content nav ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        .header-content nav ul li {
+            margin: 0 15px;
+        }
+
+        .recipe-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .recipe-content-container {
+            background-color: #6a8e61;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: white;
+            text-align: center;
+        }
+
+        .recipe-content-container img {
+            width: 350px;
+            border-radius: 50%;
+            border: 5px solid #f9e9d9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 20px 0;
+        }
+
+        .recipe-content-container h2 {
+            color: #f9e9d9;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .recipe-content-container h3 {
+            font-size: 1.8em;
+            margin-top: 30px;
+        }
+
+        .recipe-content-container ul, .recipe-content-container ol {
+            display: inline-block;
+            text-align: left;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .recipe-content-container li {
+            margin-bottom: 10px;
+        }
+
+        .nutrition-info {
+            background-color: #f9e9d9;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            color: #6a8e61;
+            font-size: 1.1em;
+            display: inline-block;
+            text-align: left;
+        }
+
+        .nutrition-info h3 {
+            color: #6a8e61;
+            margin-top: 0;
+            text-align: center;
+        }
+
+        .centered-text {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cta-button {
+            font-size: 1.2em;
+            padding: 15px 30px;
+        }
+    </style>
+</head>
+<body>
+    <header class="sticky">
+        <div class="header-content">
+            <h1>Nutribite</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recipes.html">Recetas</a></li>
+                    <li><a href="ingreso1.html">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="section-content">
+        <div class="recipe-container">
+            <section class="recipe-content-container">
+                <div class="recipe-content">
+                    <h2>Wrap de Pavo y Palta</h2>
+                    <img src="images/fajita.png" alt="Wrap de Pavo y Palta">
+                    <p><strong>Tiempo de preparación:</strong> 15 minutos</p>
+                    <p><strong>Porciones:</strong> 2</p>
+                    
+                    <h3>Ingredientes:</h3>
+                    <ul>
+                        <li>2 tortillas integrales grandes</li>
+                        <li>200g de pechuga de pavo cocida y en lonchas finas</li>
+                        <li>1 palta (aguacate) madura</li>
+                        <li>1 tomate mediano, en rodajas finas</li>
+                        <li>1 taza de hojas de espinaca fresca</li>
+                        <li>1/4 de cebolla morada, en rodajas finas</li>
+                        <li>2 cucharadas de queso crema light</li>
+                        <li>1 cucharada de jugo de limón</li>
+                        <li>Sal y pimienta al gusto</li>
+                    </ul>
+                    
+                    <h3>Instrucciones:</h3>
+                    <ol>
+                        <li>En un tazón pequeño, machaca la palta con el jugo de limón, sal y pimienta al gusto.</li>
+                        <li>Calienta ligeramente las tortillas en una sartén o en el microondas para que sean más flexibles.</li>
+                        <li>Extiende una capa fina de queso crema sobre cada tortilla.</li>
+                        <li>Reparte la mezcla de palta sobre el queso crema.</li>
+                        <li>Coloca las lonchas de pavo sobre la palta.</li>
+                        <li>Agrega las rodajas de tomate, la cebolla morada y las hojas de espinaca.</li>
+                        <li>Enrolla cuidadosamente la tortilla, doblando los extremos hacia adentro para evitar que se salga el relleno.</li>
+                        <li>Corta cada wrap por la mitad diagonalmente.</li>
+                        <li>Sirve inmediatamente y disfruta de tu wrap fresco y nutritivo.</li>
+                    </ol>
+                    
+                    <div class="nutrition-info">
+                        <h3>Información Nutricional (por porción):</h3>
+                        <p>Calorías: 420</p>
+                        <p>Proteínas: 30g</p>
+                        <p>Carbohidratos: 35g</p>
+                        <p>Grasas: 22g</p>
+                        <p>Fibra: 10g</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="centered-text">
+            <a href="recipes.html" class="cta-button">Volver a las recetas</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Nutribite. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

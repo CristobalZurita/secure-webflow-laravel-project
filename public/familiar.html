@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Familiar - Nutribite</title>
+    <link rel="stylesheet" href="https://use.typekit.net/apl6lau.css">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .header-content {
+            background-color: #6a8e61;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .header-content h1 {
+            margin-bottom: 20px;
+        }
+
+        .header-content nav ul {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .header-content nav ul li {
+            margin: 0 15px;
+        }
+
+        .header-content nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .header-content nav ul li a:hover {
+            color: #f9e9d9;
+        }
+
+        .plan-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .plan-content {
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .best-offer {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background-color: #ff9800;
+            color: white;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .plan-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .plan-header h2 {
+            color: #6a8e61;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 1.8em;
+            color: #6a8e61;
+            font-weight: bold;
+        }
+
+        .price-note {
+            font-size: 0.8em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .plan-features {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        .plan-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-features li::before {
+            content: "✓";
+            color: #6a8e61;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .cta-button {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            padding: 15px;
+            background-color: #6a8e61;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #557c4d;
+        }
+
+        footer {
+            background-color: #6a8e61;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header class="sticky">
+        <div class="header-content">
+            <h1>Nutribite</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="recipes.html">Recetas</a></li>
+                    <li><a href="ingreso1.html">Iniciar Sesión</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="plan-container">
+        <section class="plan-content">
+            <div class="best-offer">Mejor Oferta</div>
+            <div class="plan-header">
+                <h2>Plan Familiar</h2>
+                <div class="plan-price">$17.500*</div>
+                <div class="price-note">*Precio por persona</div>
+            </div>
+            <ul class="plan-features">
+                <li>Flexibilidad: sesiones online y presenciales</li>
+                <li>Asistencia continua por un profesional calificado</li>
+                <li>Acceso a convenios exclusivos con gimnasios asociados</li>
+                <li>Plan adaptado para toda la familia</li>
+            </ul>
+            <a href="#" class="cta-button">¡Unir a mi familia!</a>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Nutribite. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
