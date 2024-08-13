@@ -10,23 +10,14 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
+ 
 
     use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
      *
-     * @var string
+     * /*@var string
      */
     protected $redirectTo = '/home';
 
@@ -52,6 +43,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'user_type' => ['required', 'string', 'in:patient,nutritionist'],
+            'terms' => ['required', 'accepted'],
+            'g-recaptcha-response' => ['required', 'recaptcha'],
         ]);
     }
 
@@ -67,6 +61,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'user_type' => $data['user_type'],
         ]);
     }
 }

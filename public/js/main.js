@@ -237,3 +237,34 @@ document.querySelectorAll('input[name="telefono"]').forEach(input => {
         }
     });
 });
+
+// Manejo de formulario de mensajes
+const messageForm = document.getElementById('message-form');
+if (messageForm) {
+    messageForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Mensaje enviado con éxito');
+                this.reset();
+            } else {
+                alert('Error al enviar el mensaje');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Error al enviar el mensaje');
+        });
+    });
+}

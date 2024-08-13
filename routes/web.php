@@ -11,6 +11,8 @@ use App\Http\Controllers\SpecialistsController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PatientController;
 
 // Rutas públicas
 Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
@@ -46,7 +48,11 @@ Route::middleware(['auth', 'verified', '2fa'])->group(function () {
     Route::get('/agendar-cita', [AppointmentController::class, 'showAppointmentForm'])->name('appointment.form');
     Route::post('/agendar-cita', [AppointmentController::class, 'scheduleAppointment'])->name('appointment.schedule');
     Route::get('/available-slots', [AppointmentController::class, 'getAvailableSlots'])->name('appointment.slots');
-    
+    Route::resource('patients', PatientController::class);
+    Route::get('/appointments', [AppointmentController::class, 'index'])->name('appointments.index');
+    Route::get('/appointments/calendar', [AppointmentController::class, 'calendar'])->name('appointments.calendar');
+    Route::get('/api/appointments', [AppointmentController::class, 'getAppointmentsForCalendar'])->name('api.appointments');
+
     // Aquí puedes añadir más rutas protegidas según sea necesario
 });
 
@@ -58,3 +64,11 @@ Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('
 Route::get('/email/verify', [AuthController::class, 'showVerificationNotice'])->name('verification.notice');
 Route::get('/email/verify/{id}/{hash}', [AuthController::class, 'verifyEmail'])->name('verification.verify');
 Route::post('/email/resend', [AuthController::class, 'resendVerificationEmail'])->name('verification.resend');
+
+// Rutas para mensajes
+Route::middleware(['auth', 'verified', '2fa'])->group(function () {
+    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+    Route::get('/messages/create', [MessageController::class, 'create'])->name('messages.create');
+    Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
+    Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
+});
