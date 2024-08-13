@@ -65,21 +65,22 @@ Nutribite es una plataforma web diseñada para brindar a los usuarios acceso a r
 ## Diagrama de Flujo de la Aplicación
 
 
+
 ```mermaid
 flowchart TD
     subgraph Frontend
         A[Usuario] -->|Accede a| B[Interfaz Web]
         B -->|Envia y Recibe| K((Frontend))
-        style B fill:#f9f,stroke:#333,stroke-width:2px;
+        style B fill:#f9f,stroke:#333,stroke-width:2px,color:#000;
     end
 
     subgraph Backend
         K --> C[Laravel Controllers]
         C --> D[Base de Datos]
         C --> E[Autenticación 2FA]
-        style C fill:#bbf,stroke:#333,stroke-width:2px;
-        style D fill:#ff9,stroke:#333,stroke-width:2px;
-        style E fill:#f99,stroke:#333,stroke-width:2px;
+        style C fill:#bbf,stroke:#333,stroke-width:2px,color:#000;
+        style D fill:#ff9,stroke:#333,stroke-width:2px,color:#000;
+        style E fill:#f99,stroke:#333,stroke-width:2px,color:#000;
     end
 
     subgraph Features
@@ -88,11 +89,11 @@ flowchart TD
         D --> H[Planes Nutricionales]
         D --> I[Mensajes y Comunicaciones]
         D --> J[Reportes y Estadísticas]
-        style F fill:#9f9,stroke:#333,stroke-width:2px;
-        style G fill:#9ff,stroke:#333,stroke-width:2px;
-        style H fill:#f99,stroke:#333,stroke-width:2px;
-        style I fill:#ff9,stroke:#333,stroke-width:2px;
-        style J fill:#bbf,stroke:#333,stroke-width:2px;
+        style F fill:#9f9,stroke:#333,stroke-width:2px,color:#000;
+        style G fill:#9ff,stroke:#333,stroke-width:2px,color:#000;
+        style H fill:#f99,stroke:#333,stroke-width:2px,color:#000;
+        style I fill:#ff9,stroke:#333,stroke-width:2px,color:#000;
+        style J fill:#bbf,stroke:#333,stroke-width:2px,color:#000;
     end
 
 ```
