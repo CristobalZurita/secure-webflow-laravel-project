@@ -5,7 +5,9 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'nombre':
                 return input.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '').trim();
             case 'telefono':
-                return input.replace(/[^\d+]/g, '').trim();
+                return input.replace(/[^0-9+]/g, '').trim(); // Solo permitir números
+            case 'rut':
+                return input.replace(/[^0-9kK]/g, '').trim();
             case 'mensaje':
                 return input.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\.,¿?]/g, '').trim();
             default:
@@ -16,80 +18,82 @@ document.addEventListener('DOMContentLoaded', () => {
     // Función de Validación Global
     function validateField(input, regex, errorMsg) {
         const sanitizedValue = sanitizeInput(input.value, input.name);
-        
-        // No reasignar input.value a menos que el valor sea válido
+
         if (!regex.test(sanitizedValue)) {
             alert(errorMsg);
             input.focus();
             return false;
         }
 
-        // Solo reasigna el valor si la validación es exitosa
         input.value = sanitizedValue;
         return true;
     }
-
-    // Aplicar Sanitización y Validación a Todos los Formularios en la Página
-    document.querySelectorAll('form').forEach((form) => {
-        form.addEventListener('submit', (e) => {
-            let isValid = true;  // Inicializa isValid como true
-
-            form.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach((input) => {
-                if (input.name === 'nombre') {
-                    if (!validateField(input, /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, 'El nombre solo puede contener letras y espacios.')) {
-                        isValid = false;
-                    }
-                } else if (input.name === 'telefono') {
-                    if (!validateField(input, /^\+56\d{9}$/, 'El teléfono debe comenzar con +56 y seguir con 9 dígitos.')) {
-                        isValid = false;
-                    }
-                } else if (input.name === 'correo') {
-                    if (!validateField(input, /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Por favor, ingrese una dirección de correo electrónico válida.')) {
-                        isValid = false;
-                    }
-                } else if (input.name === 'mensaje') {
-                    if (!validateField(input, /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\.,¿?]+$/, 'El mensaje solo puede contener letras, números, signos de pregunta, comas, puntos y acentos en las vocales.')) {
-                        isValid = false;
-                    }
-                }
-            });
-
-            // Validación específica para la página de Agenda tu Hora
-            if (form.id === 'reserva-form') {
-                const tipoConsulta = form.querySelector('select[name="tipoConsulta"]');
-                const especialidad = form.querySelector('select[name="especialidad"]');
-                const centroAtencion = form.querySelector('select[name="centroAtencion"]');
-                const selectedTimeSlot = form.querySelector('.time-slot.selected');
-
-                if (tipoConsulta && tipoConsulta.value === "") {
-                    alert('Por favor, seleccione un tipo de consulta.');
+// Aplicar Sanitización y Validación a Todos los Formularios en la Página
+document.querySelectorAll('form').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+        let isValid = true;
+        form.querySelectorAll('input[type="text"], input[type="email"], textarea').forEach((input) => {
+            if (input.name === 'nombre') {
+                if (!validateField(input, /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, 'El nombre solo puede contener letras y espacios.')) {
                     isValid = false;
                 }
-                if (especialidad && especialidad.value === "") {
-                    alert('Por favor, seleccione una especialidad.');
+            } else if (input.name === 'telefono') {
+                if (!input.value.startsWith("+56")) {
+                    input.value = "+56" + sanitizeInput(input.value, 'telefono');
+                }
+                if (!validateField(input, /^\+56\d{9}$/, 'El teléfono debe comenzar con +56 y seguir con 9 dígitos.')) {
                     isValid = false;
                 }
-                if (centroAtencion && centroAtencion.value === "") {
-                    alert('Por favor, seleccione un centro de atención.');
+            } else if (input.name === 'rut') {
+                if (!validateField(input, /^\d{7,8}[kK\d]$/, 'El RUT debe ser un número seguido por k o K si corresponde.')) {
                     isValid = false;
                 }
-                if (!selectedTimeSlot) {
-                    alert('Por favor, seleccione una fecha y hora para su cita.');
+            } else if (input.name === 'correo') {
+                if (!validateField(input, /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Por favor, ingrese una dirección de correo electrónico válida.')) {
                     isValid = false;
                 }
-            }
-
-            if (!isValid) {
-                e.preventDefault();  // Evita el envío del formulario si hay errores
-            } else {
-                alert('Formulario enviado correctamente. Gracias por contactarnos!');
-                form.reset();  // Resetea el formulario si todo está bien
-                if (form.id === 'reserva-form') {
-                    document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+            } else if (input.name === 'mensaje') {
+                if (!validateField(input, /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s\.,¿?]+$/, 'El mensaje solo puede contener letras, números, signos de pregunta, comas, puntos y acentos en las vocales.')) {
+                    isValid = false;
                 }
             }
         });
+
+        // Validación específica para la página de Agenda tu Hora
+        if (form.id === 'reserva-form') {
+            const tipoConsulta = form.querySelector('select[name="tipoConsulta"]');
+            const especialidad = form.querySelector('select[name="especialidad"]');
+            const centroAtencion = form.querySelector('select[name="centroAtencion"]');
+            const selectedTimeSlot = form.querySelector('.time-slot.selected');
+            if (tipoConsulta && tipoConsulta.value === "") {
+                alert('Por favor, seleccione un tipo de consulta.');
+                isValid = false;
+            }
+            if (especialidad && especialidad.value === "") {
+                alert('Por favor, seleccione una especialidad.');
+                isValid = false;
+            }
+            if (centroAtencion && centroAtencion.value === "") {
+                alert('Por favor, seleccione un centro de atención.');
+                isValid = false;
+            }
+            if (!selectedTimeSlot) {
+                alert('Por favor, seleccione una fecha y hora para su cita.');
+                isValid = false;
+            }
+        }
+
+        if (!isValid) {
+            e.preventDefault(); // Evita el envío del formulario si hay errores
+        } else {
+            alert('Formulario enviado correctamente. Gracias por contactarnos!');
+            form.reset(); // Resetea el formulario si todo está bien
+            if (form.id === 'reserva-form') {
+                document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
+            }
+        }
     });
+});
 
     // Validación y envío del formulario de registro
     const registerForm = document.getElementById('register-form');
@@ -218,4 +222,18 @@ document.addEventListener('DOMContentLoaded', () => {
         updateWeekDisplay();
         generateTimeSlots();
     }
+});
+document.querySelectorAll('input[name="telefono"]').forEach(input => {
+    input.addEventListener('input', function(e) {
+        // Permitir solo números
+        this.value = this.value.replace(/\D/g, '');
+        // Limitar a 11 dígitos (56 + 9 dígitos)
+        if (this.value.length > 11) {
+            this.value = this.value.slice(0, 11);
+        }
+        // Asegurarse de que comience con "56"
+        if (this.value.length >= 2 && !this.value.startsWith("56")) {
+            this.value = "56" + this.value.slice(2);
+        }
+    });
 });

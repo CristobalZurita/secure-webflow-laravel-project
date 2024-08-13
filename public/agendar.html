@@ -24,20 +24,20 @@
             font-weight: bold;
             text-align: center;
             padding: 10px 0;
-            background-color: #f0f0f0;
+            background-color: #a6d28b;
         }
         .time-slot {
             text-align: center;
             padding: 5px;
             margin: 2px 0;
-            background-color: #e9e9e9;
+            background-color: #bddea8;
             cursor: pointer;
         }
         .time-slot:hover {
-            background-color: #d0d0d0;
+            background-color: #e1f4d5;
         }
         .time-slot.selected {
-            background-color: #4CAF50;
+            background-color: #e3a616;
             color: white;
         }
     </style>
@@ -58,71 +58,74 @@
     <main>
         <section id="agendar" class="section-content">
             <div class="reserva-container">
-                <div class="reserva-section">
-                    <h3>1. Seleccione Tipo de Consulta</h3>
-                    <select class="reserva-select">
-                        <option>Consulta Nutricional</option>
-                        <option>Evaluación Antropométrica</option>
-                        <option>Plan Alimentario Personalizado</option>
-                    </select>
-                </div>
-
-                <div class="reserva-section">
-                    <h3>2. Búsqueda</h3>
-                    <select class="reserva-select">
-                        <option>Seleccione una Especialidad</option>
-                        <option>Nutrición Deportiva</option>
-                        <option>Nutrición Clínica</option>
-                        <option>Nutrición Vegana</option>
-                    </select>
-                    <select class="reserva-select">
-                        <option>Seleccione un Centro de Atención</option>
-                        <option>Centro Nutribite Central</option>
-                        <option>Sucursal Norte</option>
-                        <option>Sucursal Sur</option>
-                    </select>
-                </div>
-
-                <div class="reserva-section">
-                    <h3>3. Seleccione una Fecha y Hora</h3>
-                    <div class="week-picker">
-                        <button id="prevWeek">&lt; Semana anterior</button>
-                        <span id="currentWeek"></span>
-                        <button id="nextWeek">Semana siguiente &gt;</button>
+                <form id="reserva-form">
+                    <div class="reserva-section">
+                        <h3>1. Seleccione Tipo de Consulta</h3>
+                        <select class="reserva-select" name="tipoConsulta">
+                            <option value="">Seleccione el Tipo de Consulta</option>
+                            <option>Consulta Nutricional</option>
+                            <option>Evaluación Antropométrica</option>
+                            <option>Plan Alimentario Personalizado</option>
+                        </select>
                     </div>
-                    <div class="week-schedule">
-                        <div class="day-column">
-                            <div class="day-header">Lunes</div>
-                            <div class="time-slots"></div>
+
+                    <div class="reserva-section">
+                        <h3>2. Búsqueda</h3>
+                        <select class="reserva-select" name="especialidad">
+                            <option value="">Seleccione una Especialidad</option>
+                            <option>Nutrición Deportiva</option>
+                            <option>Nutrición Clínica</option>
+                            <option>Nutrición Vegana</option>
+                        </select>
+                        <select class="reserva-select" name="centroAtencion">
+                            <option value="">Seleccione un Centro de Atención</option>
+                            <option>Centro Nutribite Central</option>
+                            <option>Sucursal Norte</option>
+                            <option>Sucursal Sur</option>
+                        </select>
+                    </div>
+
+                    <div class="reserva-section">
+                        <h3>3. Seleccione una Fecha y Hora</h3>
+                        <div class="week-picker">
+                            <button id="prevWeek" type="button">&lt; Semana anterior</button>
+                            <span id="currentWeek"></span>
+                            <button id="nextWeek" type="button">Semana siguiente &gt;</button>
                         </div>
-                        <div class="day-column">
-                            <div class="day-header">Martes</div>
-                            <div class="time-slots"></div>
-                        </div>
-                        <div class="day-column">
-                            <div class="day-header">Miércoles</div>
-                            <div class="time-slots"></div>
-                        </div>
-                        <div class="day-column">
-                            <div class="day-header">Jueves</div>
-                            <div class="time-slots"></div>
-                        </div>
-                        <div class="day-column">
-                            <div class="day-header">Viernes</div>
-                            <div class="time-slots"></div>
+                        <div class="week-schedule">
+                            <div class="day-column">
+                                <div class="day-header">Lunes</div>
+                                <div class="time-slots"></div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">Martes</div>
+                                <div class="time-slots"></div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">Miércoles</div>
+                                <div class="time-slots"></div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">Jueves</div>
+                                <div class="time-slots"></div>
+                            </div>
+                            <div class="day-column">
+                                <div class="day-header">Viernes</div>
+                                <div class="time-slots"></div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="reserva-section">
-                    <h3>4. Datos del Paciente</h3>
-                    <input type="text" placeholder="Nombre completo" class="reserva-input">
-                    <input type="text" placeholder="RUT" class="reserva-input">
-                    <input type="email" placeholder="Correo electrónico" class="reserva-input">
-                    <input type="tel" placeholder="Teléfono" class="reserva-input">
-                </div>
+                    <div class="reserva-section">
+                        <h3>4. Datos del Paciente</h3>
+                        <input type="text" name="nombre" placeholder="Nombre completo" class="reserva-input">
+                        <input type="text" name="rut" placeholder="RUT 11.111.111-1/k" class="reserva-input">
+                        <input type="email" name="correo" placeholder="Correo electrónico" class="reserva-input">
+                        <input type="tel" name="telefono" placeholder="+56 9 9999 9999" class="reserva-input">
+                    </div>
 
-                <button class="cta-button reserva-button">CONFIRMAR RESERVA</button>
+                    <button type="submit" class="cta-button reserva-button">CONFIRMAR RESERVA</button>
+                </form>
             </div>
         </section>
     </main>
@@ -131,53 +134,6 @@
         <p>&copy; 2024 Nutribite. Todos los derechos reservados.</p>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const weekSchedule = document.querySelector('.week-schedule');
-            const prevWeekBtn = document.getElementById('prevWeek');
-            const nextWeekBtn = document.getElementById('nextWeek');
-            const currentWeekSpan = document.getElementById('currentWeek');
-
-            let currentDate = new Date();
-            currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 1);
-
-            function updateWeekDisplay() {
-                const weekStart = new Date(currentDate);
-                const weekEnd = new Date(currentDate);
-                weekEnd.setDate(weekEnd.getDate() + 4);
-                currentWeekSpan.textContent = `${weekStart.toLocaleDateString()} - ${weekEnd.toLocaleDateString()}`;
-            }
-
-            function generateTimeSlots() {
-                const timeSlots = document.querySelectorAll('.time-slots');
-                timeSlots.forEach(daySlots => {
-                    daySlots.innerHTML = '';
-                    for (let hour = 9; hour < 18; hour++) {
-                        const timeSlot = document.createElement('div');
-                        timeSlot.className = 'time-slot';
-                        timeSlot.textContent = `${hour}:00`;
-                        timeSlot.addEventListener('click', function() {
-                            document.querySelectorAll('.time-slot').forEach(slot => slot.classList.remove('selected'));
-                            this.classList.add('selected');
-                        });
-                        daySlots.appendChild(timeSlot);
-                    }
-                });
-            }
-
-            prevWeekBtn.addEventListener('click', function() {
-                currentDate.setDate(currentDate.getDate() - 7);
-                updateWeekDisplay();
-            });
-
-            nextWeekBtn.addEventListener('click', function() {
-                currentDate.setDate(currentDate.getDate() + 7);
-                updateWeekDisplay();
-            });
-
-            updateWeekDisplay();
-            generateTimeSlots();
-        });
-    </script>
+    <script src="js/main.js"></script> <!-- Mantén el script principal para las validaciones aquí -->
 </body>
 </html>
