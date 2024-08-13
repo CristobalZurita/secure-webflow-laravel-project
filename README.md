@@ -1,6 +1,6 @@
 <div style="text-align: center;">
     <img src="/public/images/NutribiteLogo.png" alt="Logo 1" style="width:200px; height:auto; vertical-align: middle;"> 
-      <img src="/public/images/images.png" alt="Logo 1" style="width:195px; height:auto; vertical-align: middle;">
+      <img src="/public/images/images.png" alt="Logo 1" style="width:200px; height:auto; vertical-align: middle;">
 </div>
 
 # Nutribite
