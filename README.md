@@ -1,70 +1,128 @@
-# secure-webflow-laravel-project
-Proyecto de ciberseguridad en una página web basado en Laravel.
+<div style="text-align: center;">
+    <img src="/public/images/NutribiteLogo.png" alt="Logo 1" style="width:200px; height:auto; vertical-align: middle;"> 
+      <img src="/public/images/images.png" alt="Logo 1" style="width:195px; height:auto; vertical-align: middle;">
+</div>
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo.svg" width="400"></a></p>
+# Nutribite
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Descripción del Proyecto
 
-## About Laravel
+Nutribite es una plataforma web diseñada para brindar a los usuarios acceso a recursos y servicios relacionados con la nutrición, la salud y el bienestar. El proyecto está enfocado en ofrecer herramientas que permitan a los especialistas en nutrición gestionar sus pacientes, programar citas, crear planes nutricionales personalizados, y llevar un control exhaustivo de las comunicaciones y reportes estadísticos.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in most web projects.
+## Funcionalidades Principales
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Gestión de Pacientes**: Los nutricionistas pueden registrar y administrar la información de sus pacientes, incluyendo datos de contacto, historial médico y notas de cada consulta.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Programación de Citas**: El sistema permite a los nutricionistas y a los pacientes agendar citas, ya sea de manera presencial u online, con la posibilidad de seleccionar entre diferentes horarios disponibles.
 
-## Learning Laravel
+- **Planes Nutricionales**: Los especialistas pueden crear y gestionar planes nutricionales personalizados para sus pacientes, adaptados a sus necesidades individuales.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of any modern web application framework.
+- **Mensajes y Comunicaciones**: El sistema incluye un módulo de mensajería interna que permite a los nutricionistas comunicarse con sus pacientes y colegas de manera eficiente y segura.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Reportes y Estadísticas**: Nutribite ofrece herramientas para generar reportes detallados y visualizar estadísticas clave relacionadas con el progreso de los pacientes y la efectividad de los planes nutricionales.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript.
+## Tecnologías Utilizadas
 
-## Laravel Sponsors
+- **Backend**: Laravel, un framework PHP que facilita el desarrollo de aplicaciones web robustas y seguras.
+- **Frontend**: Blade (el motor de plantillas de Laravel), HTML5, CSS3, y JavaScript para una experiencia de usuario atractiva y responsiva.
+- **Base de Datos**: MySQL para el almacenamiento y gestión de la información.
+- **Autenticación**: Sistema de autenticación seguro con soporte para autenticación de dos factores (2FA).
+- **Control de Versiones**: Git, para el manejo del código fuente y la colaboración en equipo.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [sponsorship page](https://laravel.com).
+## Requisitos de Instalación
 
-### Premium Partners
+1. Clonar el repositorio:
+   ```bash
+   git clone https://github.com/tu_usuario/nutribite.git
+   ```
+2. Navegar al directorio del proyecto:
+   ```bash
+   cd nutribite
+   ```
+3. Instalar las dependencias del proyecto:
+   ```bash
+   composer install
+   npm install
+   ```
+4. Configurar el archivo `.env`:
+   - Copiar el archivo `.env.example` a `.env`.
+   - Configurar las variables de entorno como la conexión a la base de datos, la clave de la aplicación, etc.
+   ```bash
+   php artisan key:generate
+   ```
+5. Ejecutar las migraciones y los seeders para preparar la base de datos:
+   ```bash
+   php artisan migrate --seed
+   ```
+6. Iniciar el servidor de desarrollo:
+   ```bash
+   php artisan serve
+   npm run dev
+   ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Diagrama de Flujo de la Aplicación
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/code-of-conduct).
+```mermaid
+flowchart TD
+    subgraph Frontend
+        A[Usuario] -->|Accede a| B[Interfaz Web]
+        B -->|Envia y Recibe| K((Frontend))
+        style B fill:#f9f,stroke:#333,stroke-width:2px;
+    end
 
-## Security Vulnerabilities
+    subgraph Backend
+        K --> C[Laravel Controllers]
+        C --> D[Base de Datos]
+        C --> E[Autenticación 2FA]
+        style C fill:#bbf,stroke:#333,stroke-width:2px;
+        style D fill:#ff9,stroke:#333,stroke-width:2px;
+        style E fill:#f99,stroke:#333,stroke-width:2px;
+    end
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    subgraph Features
+        D --> F[Gestión de Pacientes]
+        D --> G[Programación de Citas]
+        D --> H[Planes Nutricionales]
+        D --> I[Mensajes y Comunicaciones]
+        D --> J[Reportes y Estadísticas]
+        style F fill:#9f9,stroke:#333,stroke-width:2px;
+        style G fill:#9ff,stroke:#333,stroke-width:2px;
+        style H fill:#f99,stroke:#333,stroke-width:2px;
+        style I fill:#ff9,stroke:#333,stroke-width:2px;
+        style J fill:#bbf,stroke:#333,stroke-width:2px;
+    end
 
-## License
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Explicación del Diagrama:
+
+- **Frontend**: Representa la interfaz web con la que interactúa el usuario.
+- **Backend**: Muestra cómo los controladores de Laravel procesan las solicitudes del frontend y acceden a la base de datos y al sistema de autenticación.
+- **Features**: Detalla las funcionalidades principales de la aplicación, como la gestión de pacientes, programación de citas, creación de planes nutricionales, y más.
+  
+Este diagrama proporciona una vista general del flujo de trabajo dentro de Nutribite, ayudando a los usuarios y colaboradores a comprender cómo están conectadas las diferentes partes del sistema.
+
+
+## Contribuir
+
+Si deseas contribuir al proyecto, por favor sigue estos pasos:
+
+1. Haz un fork del repositorio.
+2. Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y commitea (`git commit -m 'Añadir nueva funcionalidad'`).
+4. Haz push a tu rama (`git push origin feature/nueva-funcionalidad`).
+5. Abre un pull request.
+
+## Licencia
+
+Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+## Contacto
+
+Para más información, sugerencias o dudas, puedes contactar al equipo de desarrollo en [cristobal.z.q@gmail.com](mailto:cristobal.z.q@gmail.com).
+
+
 
