@@ -125,5 +125,8 @@ Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 
 Para más información, sugerencias o dudas, puedes contactar al equipo de desarrollo en [cristobal.z.q@gmail.com](mailto:cristobal.z.q@gmail.com).
 
+## Información Legal
+
+Para más detalles sobre las consideraciones legales y las políticas de privacidad de Nutribite, consulta el archivo [LEGAL.md](LEGAL.md).
 
 

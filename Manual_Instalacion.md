@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-    <img src="/public/images/images.png" alt="Logo 1" style="width:100px; height:auto; vertical-align: middle;">
+    <img src="/public/images/images.png" alt="Logo 1" style="width:130px; height:auto; vertical-align: middle;">
 </div>
 
 # Manual de Instalación y Configuración del Sistema Web Nutribite

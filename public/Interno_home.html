@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intranet Nutribite</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6741;
+            --secondary-color: #ffdab0;
+            --text-color: #333;
+            --background-color: #f9f5f0;
+            --font-size-base: 18px; /* Aumentado de 16px a 18px */
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px; /* Aumentado de 250px a 280px */
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2.5rem; /* Aumentado de 2rem a 2.5rem */
+            transition: all 0.3s ease;
+        }
+
+        .sidebar h1 {
+            margin-bottom: 2.5rem; /* Aumentado de 2rem a 2.5rem */
+            font-size: 2.3rem; /* Aumentado de 2rem a 2.3rem */
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 1.8rem; /* Aumentado de 1.5rem a 1.8rem */
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            font-size: 1.3rem; /* Aumentado de 1.1rem a 1.3rem */
+            transition: all 0.3s ease;
+        }
+
+        .sidebar a i {
+            margin-right: 1.2rem; /* Aumentado de 1rem a 1.2rem */
+            width: 24px; /* Aumentado de 20px a 24px */
+            font-size: 1.4rem; /* Aumentado de 1.2rem a 1.4rem */
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 2.5rem; /* Aumentado de 2rem a 2.5rem */
+            transition: all 0.3s ease;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem; /* Aumentado de 2rem a 2.5rem */
+        }
+
+        .header h2 {
+            font-size: 2.3rem; /* Aumentado de 2rem a 2.3rem */
+            color: var(--primary-color);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-info img {
+            width: 60px; /* Aumentado de 50px a 60px */
+            height: 60px; /* Aumentado de 50px a 60px */
+            border-radius: 50%;
+            margin-right: 1.2rem; /* Aumentado de 1rem a 1.2rem */
+        }
+
+        .user-info span {
+            font-size: 1.3rem; /* Aumentado de 1.1rem a 1.3rem */
+        }
+
+        .calendar-container {
+            background-color: white;
+            border-radius: 10px; /* Aumentado de 8px a 10px */
+            padding: 2.5rem; /* Aumentado de 2rem a 2.5rem */
+            box-shadow: 0 6px 8px rgba(0,0,0,0.1); /* Aumentado */
+        }
+
+        #calendar {
+            font-size: 1.1rem; /* Aumentado de 1rem a 1.1rem */
+        }
+
+        .fc-event {
+            border: none;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            font-size: 1rem; /* Aumentado de 0.9rem a 1rem */
+            padding: 0.6rem; /* Aumentado de 0.5rem a 0.6rem */
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2.5rem; /* Aumentado de 2rem a 2.5rem */
+            border-radius: 10px; /* Aumentado de 8px a 10px */
+            width: 80%;
+            max-width: 700px; /* Aumentado de 600px a 700px */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 32px; /* Aumentado de 28px a 32px */
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #000;
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem; /* Aumentado de 1.5rem a 1.8rem */
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem; /* Aumentado de 0.5rem a 0.6rem */
+            font-size: 1.2rem; /* Aumentado de 1.1rem a 1.2rem */
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 1rem; /* Aumentado de 0.8rem a 1rem */
+            border: 1px solid #ddd;
+            border-radius: 6px; /* Aumentado de 4px a 6px */
+            font-size: 1.1rem; /* Aumentado de 1rem a 1.1rem */
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1.2rem 1.8rem; /* Aumentado de 1rem 1.5rem a 1.2rem 1.8rem */
+            border-radius: 6px; /* Aumentado de 4px a 6px */
+            cursor: pointer;
+            font-size: 1.2rem; /* Aumentado de 1.1rem a 1.2rem */
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3a5331;
+        }
+
+        @media (max-width: 1400px) {
+            :root {
+                --font-size-base: 16px;
+            }
+
+            .sidebar {
+                width: 250px;
+                padding: 2rem;
+            }
+
+            .sidebar h1 {
+                font-size: 2rem;
+            }
+
+            .sidebar a {
+                font-size: 1.1rem;
+            }
+
+            .sidebar a i {
+                font-size: 1.2rem;
+            }
+
+            .header h2 {
+                font-size: 2rem;
+            }
+
+            .user-info img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .user-info span {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            :root {
+                --font-size-base: 14px;
+            }
+
+            .sidebar {
+                width: 220px;
+                padding: 1.5rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .sidebar ul {
+                display: flex;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+
+            .sidebar li {
+                margin: 0.5rem;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --font-size-base: 12px;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .user-info {
+                margin-top: 1rem;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 1rem;
+            }
+
+            #calendar {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h1>Nutribite</h1>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active"><i class="fas fa-calendar-alt"></i> Agenda</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Pacientes</a></li>
+                    <li><a href="#"><i class="fas fa-user-md"></i> Nutricionistas</a></li>
+                    <li><a href="#"><i class="fas fa-chart-bar"></i> Reportes</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Configuración</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <h2>Agenda</h2>
+                <div class="user-info">
+                    <img src="https://via.placeholder.com/40" alt="User Avatar">
+                    <span>Dr. Juan Pérez</span>
+                </div>
+            </header>
+
+            <div class="calendar-container">
+                <div id="calendar"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Agendar Cita</h2>
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="patientName">Nombre del Paciente</label>
+                    <input type="text" id="patientName" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentType">Tipo de Consulta</label>
+                    <select id="appointmentType" required>
+                        <option value="">Seleccione el Tipo de Consulta</option>
+                        <option value="nutricion">Consulta Nutricional</option>
+                        <option value="antropometria">Evaluación Antropométrica</option>
+                        <option value="planAlimentario">Plan Alimentario Personalizado</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentDate">Fecha</label>
+                    <input type="date" id="appointmentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentTime">Hora</label>
+                    <input type="time" id="appointmentTime" required>
+                </div>
+                <button type="submit" class="btn">Guardar Cita</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function initializeCalendar() {
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    defaultView: 'agendaWeek',
+                    navLinks: true,
+                    editable: true,
+                    eventLimit: true,
+                    selectable: true,
+                    selectHelper: true,
+                    select: function(start, end) {
+                        var modal = document.getElementById("eventModal");
+                        modal.style.display = "block";
+                        
+                        $('#appointmentDate').val(start.format('YYYY-MM-DD'));
+                        $('#appointmentTime').val(start.format('HH:mm'));
+                    },
+                    events: [
+                        {
+                            title: 'Consulta Nutricional',
+                            start: '2024-08-13T10:00:00',
+                            end: '2024-08-13T11:00:00'
+                        },
+                        {
+                            title: 'Evaluación Antropométrica',
+                            start: '2024-08-14T14:00:00',
+                            end: '2024-08-14T15:00:00'
+                        }
+                    ]
+                });
+            }
+
+            initializeCalendar();
+
+            $('.close').click(function() {
+                $('#eventModal').hide();
+            });
+
+            $('#appointmentForm').submit(function(e) {
+                e.preventDefault();
+                var title = $('#patientName').val() + ' - ' + $('#appointmentType option:selected').text();
+                var start = moment($('#appointmentDate').val() + 'T' + $('#appointmentTime').val());
+                var end = moment(start).add(1, 'hours');
+
+                $('#calendar').fullCalendar('renderEvent', {
+                    title: title,
+                    start: start,
+                    end: end,
+                    allDay: false
+                }, true);
+
+                $('#eventModal').hide();
+                this.reset();
+            });
+
+            function resizeCalendar() {
+                var calendarWidth = $('.calendar-container').width();
+                $('#calendar').fullCalendar('option', 'height', calendarWidth * 0.75);
+            }
+
+            resizeCalendar();
+
+            var resizeTimer;
+            $(window).resize(function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    $('#calendar').fullCalendar('destroy');
+                    initializeCalendar();
+                    resizeCalendar();
+                }, 250);
+            });
+        });
+    </script>
+</body>
+</html>
